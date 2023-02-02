@@ -2,6 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../components/menu_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -145,6 +146,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     },
                   );
                 },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 15),
+              child: FFButtonWidget(
+                onPressed: () {
+                  print('Button pressed ...');
+                },
+                text: 'THINGS TO DO',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 40,
+                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
             ),
           ],
