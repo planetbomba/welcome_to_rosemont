@@ -660,8 +660,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
+                          child: Image.asset(
+                            'assets/images/QZhFNsmxNtxIWH_QpBXnx.jpg',
                             width: double.infinity,
                             height: 200,
                             fit: BoxFit.cover,
