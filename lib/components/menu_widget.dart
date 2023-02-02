@@ -33,7 +33,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 flex: 1,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 150,
+                  height: 200,
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width,
                   ),
@@ -49,11 +49,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                   child: Align(
                     alignment: AlignmentDirectional(0, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(25, 50, 25, 0),
                       child: Image.asset(
                         'assets/images/rose-logo.png',
                         width: MediaQuery.of(context).size.width,
-                        height: 135.6,
+                        height: 200,
                         fit: BoxFit.contain,
                       ),
                     ),
