@@ -98,7 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   imageUrl:
                                       'https://api.rosemont.com/assets/${getJsonField(
                                     itemItem,
-                                    r'''$.item''',
+                                    r'''$.image''',
                                   ).toString()}',
                                   width: MediaQuery.of(context).size.width,
                                   height: 225,
