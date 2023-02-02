@@ -59,7 +59,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               width: MediaQuery.of(context).size.width,
               height: 225,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: Colors.black,
               ),
               child: FutureBuilder<ApiCallResponse>(
                 future: SliderItemsCall.call(),
