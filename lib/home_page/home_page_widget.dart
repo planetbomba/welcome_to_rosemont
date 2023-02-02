@@ -53,125 +53,129 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 225,
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: FutureBuilder<ApiCallResponse>(
-                future: SliderItemsCall.call(),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: CircularProgressIndicator(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 225,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                ),
+                child: FutureBuilder<ApiCallResponse>(
+                  future: SliderItemsCall.call(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                  final pageViewSliderItemsResponse = snapshot.data!;
-                  return Builder(
-                    builder: (context) {
-                      final item = SliderItemsCall.data(
-                            pageViewSliderItemsResponse.jsonBody,
-                          )?.toList() ??
-                          [];
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Stack(
-                          children: [
-                            PageView.builder(
-                              controller: pageViewController ??= PageController(
-                                  initialPage: min(0, item.length - 1)),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: item.length,
-                              itemBuilder: (context, itemIndex) {
-                                final itemItem = item[itemIndex];
-                                return CachedNetworkImage(
-                                  imageUrl:
-                                      'https://api.rosemont.com/assets/${getJsonField(
-                                    itemItem,
-                                    r'''$.image''',
-                                  ).toString()}',
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 225,
-                                  fit: BoxFit.cover,
-                                );
-                              },
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0, 1),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                                child:
-                                    smooth_page_indicator.SmoothPageIndicator(
-                                  controller: pageViewController ??=
-                                      PageController(
-                                          initialPage: min(0, item.length - 1)),
-                                  count: item.length,
-                                  axisDirection: Axis.horizontal,
-                                  onDotClicked: (i) {
-                                    pageViewController!.animateToPage(
-                                      i,
-                                      duration: Duration(milliseconds: 500),
-                                      curve: Curves.ease,
-                                    );
-                                  },
-                                  effect:
-                                      smooth_page_indicator.ExpandingDotsEffect(
-                                    expansionFactor: 1.5,
-                                    spacing: 8,
-                                    radius: 16,
-                                    dotWidth: 16,
-                                    dotHeight: 16,
-                                    dotColor: Color(0xFF9E9E9E),
-                                    activeDotColor: Color(0xFF3F51B5),
-                                    paintStyle: PaintingStyle.fill,
+                      );
+                    }
+                    final pageViewSliderItemsResponse = snapshot.data!;
+                    return Builder(
+                      builder: (context) {
+                        final item = SliderItemsCall.data(
+                              pageViewSliderItemsResponse.jsonBody,
+                            )?.toList() ??
+                            [];
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Stack(
+                            children: [
+                              PageView.builder(
+                                controller: pageViewController ??=
+                                    PageController(
+                                        initialPage: min(0, item.length - 1)),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: item.length,
+                                itemBuilder: (context, itemIndex) {
+                                  final itemItem = item[itemIndex];
+                                  return CachedNetworkImage(
+                                    imageUrl:
+                                        'https://api.rosemont.com/assets/${getJsonField(
+                                      itemItem,
+                                      r'''$.image''',
+                                    ).toString()}',
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 225,
+                                    fit: BoxFit.cover,
+                                  );
+                                },
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 1),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child:
+                                      smooth_page_indicator.SmoothPageIndicator(
+                                    controller: pageViewController ??=
+                                        PageController(
+                                            initialPage:
+                                                min(0, item.length - 1)),
+                                    count: item.length,
+                                    axisDirection: Axis.horizontal,
+                                    onDotClicked: (i) {
+                                      pageViewController!.animateToPage(
+                                        i,
+                                        duration: Duration(milliseconds: 500),
+                                        curve: Curves.ease,
+                                      );
+                                    },
+                                    effect: smooth_page_indicator
+                                        .ExpandingDotsEffect(
+                                      expansionFactor: 1.5,
+                                      spacing: 8,
+                                      radius: 16,
+                                      dotWidth: 16,
+                                      dotHeight: 16,
+                                      dotColor: Color(0xFF9E9E9E),
+                                      activeDotColor: Color(0xFF3F51B5),
+                                      paintStyle: PaintingStyle.fill,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 15),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'THINGS TO DO',
-                options: FFButtonOptions(
-                  width: double.infinity,
-                  height: 40,
-                  color: FlutterFlowTheme.of(context).secondaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 15),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'THINGS TO DO',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
