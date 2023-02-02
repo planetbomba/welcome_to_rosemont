@@ -191,8 +191,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
+                          child: Image.asset(
+                            'assets/images/xJq7FxgHU0mxF9r1NyCuV.jpg',
                             width: double.infinity,
                             height: 200,
                             fit: BoxFit.cover,
@@ -203,11 +203,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         alignment: AlignmentDirectional(0.2, 1),
                         child: Container(
                           width: double.infinity,
-                          height: 175,
+                          height: 75,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
+                              stops: [0, 0.4],
                               begin: AlignmentDirectional(0, -1),
                               end: AlignmentDirectional(0, 1),
                             ),
@@ -270,8 +270,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
+                          child: Image.asset(
+                            'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
                             width: double.infinity,
                             height: 200,
                             fit: BoxFit.cover,
@@ -282,11 +282,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         alignment: AlignmentDirectional(0.2, 1),
                         child: Container(
                           width: double.infinity,
-                          height: 175,
+                          height: 75,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
+                              stops: [0, 0.4],
                               begin: AlignmentDirectional(0, -1),
                               end: AlignmentDirectional(0, 1),
                             ),
@@ -301,9 +301,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.65),
+                        alignment: AlignmentDirectional(0, 0.85),
                         child: Text(
-                          'ROSEMONT PERKS',
+                          'DES CONVENTION CENTER',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
@@ -314,17 +314,68 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/UOTjj2GczfenkZPIpxwEA.jpg',
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.9),
+                        alignment: AlignmentDirectional(0.2, 1),
+                        child: Container(
+                          width: double.infinity,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x00990000), Color(0xB11E2429)],
+                              stops: [0, 0.4],
+                              begin: AlignmentDirectional(0, -1),
+                              end: AlignmentDirectional(0, 1),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                            ),
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0.85),
                         child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
+                          'SHOW YOUR BADGE PROGRAM',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
                                   ),
                         ),
                       ),
@@ -334,6 +385,266 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/ttIb80wjYq7KWn3j5li57.jpg',
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.2, 1),
+                        child: Container(
+                          width: double.infinity,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x00990000), Color(0xB11E2429)],
+                              stops: [0, 0.4],
+                              begin: AlignmentDirectional(0, -1),
+                              end: AlignmentDirectional(0, 1),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                            ),
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0.85),
+                        child: Text(
+                          'ALLSTATE ARENA',
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/oiIc_lxL_EjyJFeW6Tehy.jpg',
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.2, 1),
+                        child: Container(
+                          width: double.infinity,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x00990000), Color(0xB11E2429)],
+                              stops: [0, 0.4],
+                              begin: AlignmentDirectional(0, -1),
+                              end: AlignmentDirectional(0, 1),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                            ),
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0.85),
+                        child: Text(
+                          'PARKWAY BANK PARK',
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/iiWzvM-cjxTeEyGPvwwXd.jpg',
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.2, 1),
+                        child: Container(
+                          width: double.infinity,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x00990000), Color(0xB11E2429)],
+                              stops: [0, 0.4],
+                              begin: AlignmentDirectional(0, -1),
+                              end: AlignmentDirectional(0, 1),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                            ),
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0.85),
+                        child: Text(
+                          'ROSEMONT THEATRE',
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/O2xS2e28H7bxD3jx-HDd3.jpg',
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.2, 1),
+                        child: Container(
+                          width: double.infinity,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x00990000), Color(0xB11E2429)],
+                              stops: [0, 0.4],
+                              begin: AlignmentDirectional(0, -1),
+                              end: AlignmentDirectional(0, 1),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                            ),
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0.85),
+                        child: Text(
+                          'SPORTS COMPLEX',
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 75),
                 child: Container(
                   width: double.infinity,
                   height: 200,
@@ -361,11 +672,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         alignment: AlignmentDirectional(0.2, 1),
                         child: Container(
                           width: double.infinity,
-                          height: 175,
+                          height: 75,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
+                              stops: [0, 0.4],
                               begin: AlignmentDirectional(0, -1),
                               end: AlignmentDirectional(0, 1),
                             ),
@@ -380,9 +691,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.65),
+                        alignment: AlignmentDirectional(0, 0.85),
                         child: Text(
-                          'ROSEMONT PERKS',
+                          'ROSEMONT HEALTH & FITNESS',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
@@ -390,415 +701,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     color: Colors.white,
                                     fontSize: 22,
                                     fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1),
-                        child: Container(
-                          width: double.infinity,
-                          height: 175,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.65),
-                        child: Text(
-                          'ROSEMONT PERKS',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1),
-                        child: Container(
-                          width: double.infinity,
-                          height: 175,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.65),
-                        child: Text(
-                          'ROSEMONT PERKS',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1),
-                        child: Container(
-                          width: double.infinity,
-                          height: 175,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.65),
-                        child: Text(
-                          'ROSEMONT PERKS',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1),
-                        child: Container(
-                          width: double.infinity,
-                          height: 175,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.65),
-                        child: Text(
-                          'ROSEMONT PERKS',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            'https://picsum.photos/seed/301/600',
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1),
-                        child: Container(
-                          width: double.infinity,
-                          height: 175,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.7],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.65),
-                        child: Text(
-                          'ROSEMONT PERKS',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0, 0.9),
-                        child: Text(
-                          'ROSEMONT CHAMBER OF COMMERCE',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
                                   ),
                         ),
                       ),
