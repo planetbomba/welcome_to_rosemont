@@ -31,6 +31,22 @@ class SliderItemsCall {
       );
 }
 
+class ThingsToDoEventsCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Things to Do Events',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/events',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

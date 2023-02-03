@@ -154,8 +154,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 15),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.goNamed('ThingsToDo');
                   },
                   text: 'THINGS TO DO',
                   options: FFButtonOptions(
