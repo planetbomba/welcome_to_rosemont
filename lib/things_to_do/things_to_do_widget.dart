@@ -251,7 +251,10 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12, 0, 0, 0),
                                         child: Text(
-                                          'In Preparation',
+                                          getJsonField(
+                                            eventItem,
+                                            r'''$.start_date''',
+                                          ).toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -267,7 +270,10 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12, 0, 0, 0),
                                       child: Text(
-                                        '4:30pm',
+                                        getJsonField(
+                                          eventItem,
+                                          r'''$.location''',
+                                        ).toString(),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
