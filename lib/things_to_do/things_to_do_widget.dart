@@ -132,12 +132,14 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       child: Padding(
@@ -146,29 +148,18 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.start,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              'Oil Change',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF57636C),
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 4, 0, 0),
+                                                  .fromSTEB(0, 8, 0, 0),
                                               child: Text(
-                                                'Tesla Model Y',
+                                                getJsonField(
+                                                  eventItem,
+                                                  r'''$.title''',
+                                                ).toString(),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle1
@@ -179,24 +170,6 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                           fontSize: 18,
                                                           fontWeight:
                                                               FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 4, 0, 0),
-                                              child: Text(
-                                                '#495242',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText2
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
                                                         ),
                                               ),
                                             ),
@@ -238,7 +211,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 8, 8),
+                                            8, 8, 3, 8),
                                         child: Icon(
                                           Icons.access_time_rounded,
                                           color: Color(0xFF57636C),
@@ -249,7 +222,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                     Expanded(
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            12, 0, 0, 0),
+                                            5, 0, 0, 0),
                                         child: Text(
                                           getJsonField(
                                             eventItem,
@@ -260,31 +233,35 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                               .override(
                                                 fontFamily: 'Outfit',
                                                 color: Color(0xFF57636C),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 0, 0, 0),
-                                      child: Text(
-                                        getJsonField(
-                                          eventItem,
-                                          r'''$.location''',
-                                        ).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color: Color(0xFF101213),
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                      ),
-                                    ),
                                   ],
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(-0.7, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12, 0, 0, 12),
+                                  child: Text(
+                                    getJsonField(
+                                      eventItem,
+                                      r'''$.location''',
+                                    ).toString(),
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: Color(0xFF101213),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],
