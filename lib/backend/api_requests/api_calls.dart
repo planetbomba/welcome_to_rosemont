@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../../flutter_flow/flutter_flow_util.dart';
-
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -10,7 +9,7 @@ export 'api_manager.dart' show ApiCallResponse;
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class SliderItemsCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Slider Items',
       apiUrl: 'https://api.rosemont.com/items/SliderItem',
@@ -32,7 +31,7 @@ class SliderItemsCall {
 }
 
 class ThingsToDoEventsCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Things to Do Events',
       apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/events',
@@ -72,11 +71,11 @@ String _serializeList(List? list) {
   }
 }
 
-String _serializeJson(dynamic jsonVar) {
-  jsonVar ??= {};
+String _serializeJson(dynamic jsonVar, [bool isList = false]) {
+  jsonVar ??= (isList ? [] : {});
   try {
     return json.encode(jsonVar);
   } catch (_) {
-    return '{}';
+    return isList ? '[]' : '{}';
   }
 }

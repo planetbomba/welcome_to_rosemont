@@ -1,13 +1,17 @@
-import '../backend/api_requests/api_calls.dart';
-import '../components/menu_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/menu_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'home_page_model.dart';
+export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -17,49 +21,71 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  PageController? pageViewController;
-  final _unfocusNode = FocusNode();
+  late HomePageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => HomePageModel());
+  }
+
+  @override
   void dispose() {
-    _unfocusNode.dispose();
+    _model.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.black,
-      drawer: Drawer(
-        elevation: 16,
-        child: MenuWidget(),
-      ),
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: true,
-        title: Text(
-          'WELCOME',
-          style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Poppins',
-                color: FlutterFlowTheme.of(context).white,
-                fontSize: 18,
-              ),
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 4,
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: SingleChildScrollView(
+      );
+    }
+
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.black,
+        drawer: Drawer(
+          elevation: 16.0,
+          child: wrapWithModel(
+            model: _model.menuModel,
+            updateCallback: () => setState(() {}),
+            child: MenuWidget(),
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: true,
+          title: Text(
+            'WELCOME',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Poppins',
+                  color: FlutterFlowTheme.of(context).white,
+                  fontSize: 18.0,
+                ),
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 4.0,
+        ),
+        body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: 225,
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: 225.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
@@ -70,10 +96,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     if (!snapshot.hasData) {
                       return Center(
                         child: SizedBox(
-                          width: 50,
-                          height: 50,
+                          width: 50.0,
+                          height: 50.0,
                           child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
                           ),
                         ),
                       );
@@ -86,11 +114,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             )?.toList() ??
                             [];
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.sizeOf(context).width * 1.0,
                           child: Stack(
                             children: [
                               PageView.builder(
-                                controller: pageViewController ??=
+                                controller: _model.pageViewController ??=
                                     PageController(
                                         initialPage: min(0, item.length - 1)),
                                 scrollDirection: Axis.horizontal,
@@ -98,32 +126,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 itemBuilder: (context, itemIndex) {
                                   final itemItem = item[itemIndex];
                                   return CachedNetworkImage(
+                                    fadeInDuration: Duration(milliseconds: 500),
+                                    fadeOutDuration:
+                                        Duration(milliseconds: 500),
                                     imageUrl:
                                         'https://api.rosemont.com/assets/${getJsonField(
                                       itemItem,
                                       r'''$.image''',
                                     ).toString()}',
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 225,
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 225.0,
                                     fit: BoxFit.cover,
                                   );
                                 },
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0, 1),
+                                alignment: AlignmentDirectional(0.00, 1.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 10),
+                                      0.0, 0.0, 0.0, 10.0),
                                   child:
                                       smooth_page_indicator.SmoothPageIndicator(
-                                    controller: pageViewController ??=
+                                    controller: _model.pageViewController ??=
                                         PageController(
                                             initialPage:
                                                 min(0, item.length - 1)),
                                     count: item.length,
                                     axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) {
-                                      pageViewController!.animateToPage(
+                                    onDotClicked: (i) async {
+                                      await _model.pageViewController!
+                                          .animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,
@@ -132,10 +165,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     effect: smooth_page_indicator
                                         .ExpandingDotsEffect(
                                       expansionFactor: 1.5,
-                                      spacing: 8,
-                                      radius: 16,
-                                      dotWidth: 16,
-                                      dotHeight: 16,
+                                      spacing: 8.0,
+                                      radius: 16.0,
+                                      dotWidth: 16.0,
+                                      dotHeight: 16.0,
                                       dotColor: Color(0xFF9E9E9E),
                                       activeDotColor: Color(0xFF3F51B5),
                                       paintStyle: PaintingStyle.fill,
@@ -152,99 +185,112 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 15),
+                padding: EdgeInsetsDirectional.fromSTEB(50.0, 15.0, 50.0, 15.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.goNamed('ThingsToDo');
+                    context.goNamed(
+                      'ThingsToDo',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                   text: 'THINGS TO DO',
                   options: FFButtonOptions(
                     width: double.infinity,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).secondaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).secondary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
                         ),
+                    elevation: 2.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
-                      width: 1,
+                      width: 1.0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/xJq7FxgHU0mxF9r1NyCuV.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.65),
+                        alignment: AlignmentDirectional(0.00, 0.65),
                         child: Text(
                           'ROSEMONT PERKS',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.9),
+                        alignment: AlignmentDirectional(0.00, 0.90),
                         child: Text(
                           'ROSEMONT CHAMBER OF COMMERCE',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 17,
+                                    fontSize: 17.0,
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),
@@ -254,62 +300,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'DES CONVENTION CENTER',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -319,62 +365,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/UOTjj2GczfenkZPIpxwEA.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'SHOW YOUR BADGE PROGRAM',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -384,62 +430,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/ttIb80wjYq7KWn3j5li57.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ALLSTATE ARENA',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -449,62 +495,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/oiIc_lxL_EjyJFeW6Tehy.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'PARKWAY BANK PARK',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -514,62 +560,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/iiWzvM-cjxTeEyGPvwwXd.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ROSEMONT THEATRE',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -579,62 +625,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/O2xS2e28H7bxD3jx-HDd3.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'SPORTS COMPLEX',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),
@@ -644,62 +690,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 75),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 75.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 200.0,
                   child: Stack(
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
                             'assets/images/QZhFNsmxNtxIWH_QpBXnx.jpg',
                             width: double.infinity,
-                            height: 200,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.2, 1),
+                        alignment: AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 75.0,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0, 0.4],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
+                              stops: [0.0, 0.4],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.85),
+                        alignment: AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ROSEMONT HEALTH & FITNESS',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 22.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                         ),

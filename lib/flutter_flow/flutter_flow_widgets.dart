@@ -22,6 +22,7 @@ class FFButtonOptions {
     this.hoverBorderSide,
     this.hoverTextColor,
     this.hoverElevation,
+    this.maxLines,
   });
 
   final TextStyle? textStyle;
@@ -32,6 +33,7 @@ class FFButtonOptions {
   final Color? color;
   final Color? disabledColor;
   final Color? disabledTextColor;
+  final int? maxLines;
   final Color? splashColor;
   final double? iconSize;
   final Color? iconColor;
@@ -69,16 +71,23 @@ class FFButtonWidget extends StatefulWidget {
 class _FFButtonWidgetState extends State<FFButtonWidget> {
   bool loading = false;
 
+  int get maxLines => widget.options.maxLines ?? 1;
+
   @override
   Widget build(BuildContext context) {
     Widget textWidget = loading
-        ? Center(
-            child: Container(
-              width: 23,
-              height: 23,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  widget.options.textStyle!.color ?? Colors.white,
+        ? SizedBox(
+            width: widget.options.width == null
+                ? _getTextWidth(widget.text, widget.options.textStyle, maxLines)
+                : null,
+            child: Center(
+              child: SizedBox(
+                width: 23,
+                height: 23,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    widget.options.textStyle!.color ?? Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -86,7 +95,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
         : AutoSizeText(
             widget.text,
             style: widget.options.textStyle?.withoutColor(),
-            maxLines: 1,
+            maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
           );
 
@@ -128,19 +137,21 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
       ),
       foregroundColor: MaterialStateProperty.resolveWith<Color?>(
         (states) {
-          if (states.contains(MaterialState.disabled)) {
-            return widget.options.disabledTextColor ?? Colors.white;
+          if (states.contains(MaterialState.disabled) &&
+              widget.options.disabledTextColor != null) {
+            return widget.options.disabledTextColor;
           }
           if (states.contains(MaterialState.hovered) &&
               widget.options.hoverTextColor != null) {
             return widget.options.hoverTextColor;
           }
-          return widget.options.textStyle?.color ?? Colors.white;
+          return widget.options.textStyle?.color;
         },
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
         (states) {
-          if (states.contains(MaterialState.disabled)) {
+          if (states.contains(MaterialState.disabled) &&
+              widget.options.disabledColor != null) {
             return widget.options.disabledColor;
           }
           if (states.contains(MaterialState.hovered) &&
@@ -154,22 +165,22 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
         if (states.contains(MaterialState.pressed)) {
           return widget.options.splashColor;
         }
-        return null;
+        return widget.options.hoverColor == null ? null : Colors.transparent;
       }),
       padding: MaterialStateProperty.all(widget.options.padding ??
           const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0)),
-      elevation: MaterialStateProperty.resolveWith<double>(
+      elevation: MaterialStateProperty.resolveWith<double?>(
         (states) {
           if (states.contains(MaterialState.hovered) &&
               widget.options.hoverElevation != null) {
             return widget.options.hoverElevation!;
           }
-          return widget.options.elevation ?? 2.0;
+          return widget.options.elevation;
         },
       ),
     );
 
-    if (widget.icon != null || widget.iconData != null) {
+    if ((widget.icon != null || widget.iconData != null) && !loading) {
       return Container(
         height: widget.options.height,
         width: widget.options.width,
@@ -234,3 +245,13 @@ extension _WithoutColorExtension on TextStyle {
         overflow: overflow,
       );
 }
+
+// Slightly hacky method of getting the layout width of the provided text.
+double _getTextWidth(String text, TextStyle? style, int maxLines) =>
+    (TextPainter(
+      text: TextSpan(text: text, style: style),
+      textDirection: TextDirection.ltr,
+      maxLines: maxLines,
+    )..layout())
+        .size
+        .width;

@@ -1,10 +1,15 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_timer.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'start_model.dart';
+export 'start_model.dart';
 
 class StartWidget extends StatefulWidget {
   const StartWidget({Key? key}) : super(key: key);
@@ -14,19 +19,18 @@ class StartWidget extends StatefulWidget {
 }
 
 class _StartWidgetState extends State<StartWidget> {
-  int timerMilliseconds = 1500;
-  String timerValue = StopWatchTimer.getDisplayTime(1500, milliSecond: false);
-  StopWatchTimer timerController =
-      StopWatchTimer(mode: StopWatchMode.countDown);
+  late StartModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => StartModel());
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      timerController.onExecute.add(StopWatchExecute.start);
+      _model.timerController.onStartTimer();
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -34,12 +38,22 @@ class _StartWidgetState extends State<StartWidget> {
 
   @override
   void dispose() {
-    timerController.dispose();
+    _model.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -55,14 +69,14 @@ class _StartWidgetState extends State<StartWidget> {
               fit: BoxFit.cover,
             ),
             FlutterFlowTimer(
-              initialTime: timerMilliseconds,
+              initialTime: _model.timerMilliseconds,
               getDisplayTime: (value) =>
                   StopWatchTimer.getDisplayTime(value, milliSecond: false),
-              timer: timerController,
+              controller: _model.timerController,
               updateStateInterval: Duration(milliseconds: 200),
               onChanged: (value, displayTime, shouldUpdate) {
-                timerMilliseconds = value;
-                timerValue = displayTime;
+                _model.timerMilliseconds = value;
+                _model.timerValue = displayTime;
                 if (shouldUpdate) setState(() {});
               },
               onEnded: () async {
@@ -77,7 +91,7 @@ class _StartWidgetState extends State<StartWidget> {
                 );
               },
               textAlign: TextAlign.start,
-              style: FlutterFlowTheme.of(context).bodyText1.override(
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Poppins',
                     color: Color(0x00990000),
                   ),

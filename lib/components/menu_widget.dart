@@ -1,7 +1,12 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'menu_model.dart';
+export 'menu_model.dart';
 
 class MenuWidget extends StatefulWidget {
   const MenuWidget({Key? key}) : super(key: key);
@@ -11,6 +16,27 @@ class MenuWidget extends StatefulWidget {
 }
 
 class _MenuWidgetState extends State<MenuWidget> {
+  late MenuModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MenuModel());
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,28 +58,29 @@ class _MenuWidgetState extends State<MenuWidget> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: 200.0,
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width,
+                    maxWidth: MediaQuery.sizeOf(context).width * 1.0,
                   ),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Color(0xFFDFDFDF), Color(0x00FFFFFF)],
-                      stops: [0, 1],
-                      begin: AlignmentDirectional(0, -1),
-                      end: AlignmentDirectional(0, 1),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                   ),
-                  alignment: AlignmentDirectional(0, 0.005),
+                  alignment: AlignmentDirectional(0.00, 0.01),
                   child: Align(
-                    alignment: AlignmentDirectional(0, 0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(25, 50, 25, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(25.0, 50.0, 25.0, 0.0),
                       child: Image.asset(
                         'assets/images/rose-logo.png',
-                        width: MediaQuery.of(context).size.width,
-                        height: 200,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 200.0,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -68,43 +95,255 @@ class _MenuWidgetState extends State<MenuWidget> {
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 5),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'HomePage',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: Icon(
+                            Icons.cottage,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
+                        ),
+                        Text(
+                          'VILLAGE OF ROSEMONT',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'ThingsToDo',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: FaIcon(
+                            FontAwesomeIcons.solidCalendarAlt,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
+                        ),
+                        Text(
+                          'THINGS TO DO',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'ThingsToDo',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: Icon(
+                            Icons.restaurant_outlined,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
+                        ),
+                        Text(
+                          'WHERE TO EAT',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'ThingsToDo',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: Icon(
+                            Icons.bed,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
+                        ),
+                        Text(
+                          'WHERE TO SLEEP',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'ThingsToDo',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: Icon(
+                            Icons.newspaper,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
+                        ),
+                        Text(
+                          'NEWS',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 5.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 16, 5),
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: FlutterFlowTheme.of(context).impact,
-                          size: 30,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/des_logo.png',
+                          width: 200.0,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 5, 16, 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 16, 5),
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: FlutterFlowTheme.of(context).impact,
-                          size: 30,
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 16.0, 5.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.goNamed(
+                        'ThingsToDo',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 16.0, 5.0),
+                          child: Icon(
+                            Icons.newspaper,
+                            color: FlutterFlowTheme.of(context).impact,
+                            size: 30.0,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                      ),
-                    ],
+                        Text(
+                          'NEWS',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
