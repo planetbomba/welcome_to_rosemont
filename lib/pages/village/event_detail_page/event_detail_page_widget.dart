@@ -1,7 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -207,8 +209,12 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                         ) !=
                                         null)
                                       FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          await launchURL(getJsonField(
+                                            eventDetailPageThingsToDoSingleEventResponse
+                                                .jsonBody,
+                                            r'''$.permalink''',
+                                          ).toString());
                                         },
                                         text: 'LEARN MORE',
                                         options: FFButtonOptions(
@@ -238,15 +244,19 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                    if (getJsonField(
+                                    if (functions.notBlank(getJsonField(
                                           eventDetailPageThingsToDoSingleEventResponse
                                               .jsonBody,
                                           r'''$.ticket_link''',
-                                        ) !=
-                                        null)
+                                        ).toString()) ??
+                                        true)
                                       FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          await launchURL(getJsonField(
+                                            eventDetailPageThingsToDoSingleEventResponse
+                                                .jsonBody,
+                                            r'''$.ticket_link''',
+                                          ).toString());
                                         },
                                         text: 'GET TICKETS',
                                         options: FFButtonOptions(
@@ -290,6 +300,26 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                   ).toString(),
                                 ),
                               ),
+                              if (functions.notBlank(getJsonField(
+                                    eventDetailPageThingsToDoSingleEventResponse
+                                        .jsonBody,
+                                    r'''$.video_embed''',
+                                  ).toString()) ??
+                                  true)
+                                FlutterFlowVideoPlayer(
+                                  path: getJsonField(
+                                    eventDetailPageThingsToDoSingleEventResponse
+                                        .jsonBody,
+                                    r'''$.video_embed''',
+                                  ),
+                                  videoType: VideoType.network,
+                                  width: double.infinity,
+                                  autoPlay: false,
+                                  looping: false,
+                                  showControls: true,
+                                  allowFullScreen: true,
+                                  allowPlaybackSpeedMenu: false,
+                                ),
                             ],
                           ),
                         ),
