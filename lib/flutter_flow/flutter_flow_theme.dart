@@ -144,29 +144,29 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFE21C3D);
   late Color info = const Color(0xFF1C4494);
 
-  late Color descc = Color(0xCD262D34);
-  late Color theatre = Color(0xFF8340D6);
-  late Color arena = Color(0xFF0846AF);
-  late Color parkAndSports = Color(0xFF003366);
-  late Color healthClub = Color(0xFFCE1B1B);
-  late Color impact = Color(0xFFFF0202);
-  late Color customColor4 = Color(0xFF090F13);
-  late Color white = Color(0xFFFFFFFF);
-  late Color background = Color(0xFF1D2429);
-  late Color primary600 = Color(0xFF336A4A);
-  late Color secondary600 = Color(0xFF6D604A);
-  late Color tertiary600 = Color(0xFF0C2533);
-  late Color darkBGstatic = Color(0xFF0D1E23);
-  late Color secondary30 = Color(0x4D928163);
-  late Color overlay0 = Color(0x00FFFFFF);
-  late Color primary30 = Color(0x4D4B986C);
-  late Color customColor1 = Color(0xFF2FB73C);
-  late Color grayIcon = Color(0xFF95A1AC);
-  late Color gray200 = Color(0xFFDBE2E7);
-  late Color gray600 = Color(0xFF262D34);
-  late Color black600 = Color(0xFF090F13);
-  late Color tertiary400 = Color(0xFF39D2C0);
-  late Color textColor = Color(0xFF1E2429);
+  late Color descc = const Color(0xCD262D34);
+  late Color theatre = const Color(0xFF8340D6);
+  late Color arena = const Color(0xFF0846AF);
+  late Color parkAndSports = const Color(0xFF003366);
+  late Color healthClub = const Color(0xFFCE1B1B);
+  late Color impact = const Color(0xFFFF0202);
+  late Color customColor4 = const Color(0xFF090F13);
+  late Color white = const Color(0xFFFFFFFF);
+  late Color background = const Color(0xFF1D2429);
+  late Color primary600 = const Color(0xFF336A4A);
+  late Color secondary600 = const Color(0xFF6D604A);
+  late Color tertiary600 = const Color(0xFF0C2533);
+  late Color darkBGstatic = const Color(0xFF0D1E23);
+  late Color secondary30 = const Color(0x4D928163);
+  late Color overlay0 = const Color(0x00FFFFFF);
+  late Color primary30 = const Color(0x4D4B986C);
+  late Color customColor1 = const Color(0xFF2FB73C);
+  late Color grayIcon = const Color(0xFF95A1AC);
+  late Color gray200 = const Color(0xFFDBE2E7);
+  late Color gray600 = const Color(0xFF262D34);
+  late Color black600 = const Color(0xFF090F13);
+  late Color tertiary400 = const Color(0xFF39D2C0);
+  late Color textColor = const Color(0xFF1E2429);
 }
 
 abstract class Typography {

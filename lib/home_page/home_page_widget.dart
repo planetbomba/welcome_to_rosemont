@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/menu_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -8,13 +7,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+  const HomePageWidget({super.key});
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
@@ -56,17 +53,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.black,
-        drawer: Drawer(
-          elevation: 16.0,
-          child: wrapWithModel(
-            model: _model.menuModel,
-            updateCallback: () => setState(() {}),
-            child: MenuWidget(),
-          ),
-        ),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(
             'WELCOME',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -75,7 +64,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   fontSize: 18.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 4.0,
         ),
@@ -86,7 +75,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: 225.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.black,
                 ),
                 child: FutureBuilder<ApiCallResponse>(
@@ -113,7 +102,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               pageViewSliderItemsResponse.jsonBody,
                             )?.toList() ??
                             [];
-                        return Container(
+                        return SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: Stack(
                             children: [
@@ -126,9 +115,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 itemBuilder: (context, itemIndex) {
                                   final itemItem = item[itemIndex];
                                   return CachedNetworkImage(
-                                    fadeInDuration: Duration(milliseconds: 500),
+                                    fadeInDuration: const Duration(milliseconds: 500),
                                     fadeOutDuration:
-                                        Duration(milliseconds: 500),
+                                        const Duration(milliseconds: 500),
                                     imageUrl:
                                         'https://api.rosemont.com/assets/${getJsonField(
                                       itemItem,
@@ -142,9 +131,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
+                                alignment: const AlignmentDirectional(0.00, 1.00),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
                                   child:
                                       smooth_page_indicator.SmoothPageIndicator(
@@ -158,11 +147,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       await _model.pageViewController!
                                           .animateToPage(
                                         i,
-                                        duration: Duration(milliseconds: 500),
+                                        duration: const Duration(milliseconds: 500),
                                         curve: Curves.ease,
                                       );
                                     },
-                                    effect: smooth_page_indicator
+                                    effect: const smooth_page_indicator
                                         .ExpandingDotsEffect(
                                       expansionFactor: 1.5,
                                       spacing: 8.0,
@@ -185,13 +174,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(50.0, 15.0, 50.0, 15.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.goNamed(
+                    context.pushNamed(
                       'ThingsToDo',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),
@@ -201,18 +190,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                   text: 'THINGS TO DO',
                   options: FFButtonOptions(
-                    width: double.infinity,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondary,
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
+                          fontWeight: FontWeight.w800,
                         ),
-                    elevation: 2.0,
-                    borderSide: BorderSide(
+                    elevation: 3.0,
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -221,8 +211,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -246,11 +236,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -264,11 +254,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.65),
+                        alignment: const AlignmentDirectional(0.00, 0.65),
                         child: Text(
                           'ROSEMONT PERKS',
                           textAlign: TextAlign.start,
@@ -282,7 +272,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.90),
+                        alignment: const AlignmentDirectional(0.00, 0.90),
                         child: Text(
                           'ROSEMONT CHAMBER OF COMMERCE',
                           textAlign: TextAlign.start,
@@ -300,8 +290,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -325,11 +315,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -343,11 +333,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'DES CONVENTION CENTER',
                           textAlign: TextAlign.start,
@@ -365,8 +355,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -390,11 +380,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -408,11 +398,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'SHOW YOUR BADGE PROGRAM',
                           textAlign: TextAlign.start,
@@ -430,8 +420,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -455,11 +445,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -473,11 +463,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ALLSTATE ARENA',
                           textAlign: TextAlign.start,
@@ -495,8 +485,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -520,11 +510,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -538,11 +528,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'PARKWAY BANK PARK',
                           textAlign: TextAlign.start,
@@ -560,8 +550,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -585,11 +575,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -603,11 +593,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ROSEMONT THEATRE',
                           textAlign: TextAlign.start,
@@ -625,8 +615,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -650,11 +640,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -668,11 +658,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'SPORTS COMPLEX',
                           textAlign: TextAlign.start,
@@ -690,8 +680,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 75.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 75.0),
+                child: SizedBox(
                   width: double.infinity,
                   height: 200.0,
                   child: Stack(
@@ -715,11 +705,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.20, 1.00),
+                        alignment: const AlignmentDirectional(0.20, 1.00),
                         child: Container(
                           width: double.infinity,
                           height: 75.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0x00990000), Color(0xB11E2429)],
                               stops: [0.0, 0.4],
@@ -733,11 +723,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.85),
+                        alignment: const AlignmentDirectional(0.00, 0.85),
                         child: Text(
                           'ROSEMONT HEALTH & FITNESS',
                           textAlign: TextAlign.start,
