@@ -177,16 +177,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(
-                      'ThingsToDo',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                        ),
-                      },
-                    );
+                    context.pushNamed('ThingsToDo');
                   },
                   text: 'THINGS TO DO',
                   options: FFButtonOptions(
