@@ -1,4 +1,3 @@
-import '/components/village_bottom_navigator/village_bottom_navigator_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'event_detail_page_widget.dart' show EventDetailPageWidget;
 import 'package:flutter/material.dart';
@@ -7,21 +6,15 @@ class EventDetailPageModel extends FlutterFlowModel<EventDetailPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for VillageBottomNavigator component.
-  late VillageBottomNavigatorModel villageBottomNavigatorModel;
 
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {
-    villageBottomNavigatorModel =
-        createModel(context, () => VillageBottomNavigatorModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    villageBottomNavigatorModel.dispose();
   }
 
   /// Action blocks are added here.

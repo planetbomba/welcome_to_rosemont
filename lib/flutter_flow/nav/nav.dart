@@ -89,7 +89,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'EventDetailPage',
               path: 'eventDetailPage',
-              builder: (context, params) => const EventDetailPageWidget(),
+              builder: (context, params) => EventDetailPageWidget(
+                id: params.getParam('id', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'EatDetailPage',
@@ -109,6 +111,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

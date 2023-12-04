@@ -46,6 +46,25 @@ class ThingsToDoEventsCall {
   }
 }
 
+class ThingsToDoSingleEventCall {
+  static Future<ApiCallResponse> call({
+    String? id = '12382',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Things to Do Single Event',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/events/$id',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
