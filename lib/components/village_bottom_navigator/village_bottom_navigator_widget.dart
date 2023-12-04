@@ -67,8 +67,17 @@ class _VillageBottomNavigatorWidgetState
                     color: FlutterFlowTheme.of(context).white,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.goNamed(
+                      'HomePage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                 ),
                 Text(
@@ -95,8 +104,17 @@ class _VillageBottomNavigatorWidgetState
                     color: FlutterFlowTheme.of(context).white,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.goNamed(
+                      'ThingsToDo',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                 ),
                 Text(
@@ -123,8 +141,17 @@ class _VillageBottomNavigatorWidgetState
                     color: FlutterFlowTheme.of(context).white,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.goNamed(
+                      'EatPage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                 ),
                 Align(
@@ -154,8 +181,17 @@ class _VillageBottomNavigatorWidgetState
                     color: FlutterFlowTheme.of(context).white,
                     size: 24.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.goNamed(
+                      'SleepPage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                 ),
                 Align(
@@ -185,8 +221,17 @@ class _VillageBottomNavigatorWidgetState
                     color: FlutterFlowTheme.of(context).white,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.goNamed(
+                      'NewsPage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
                   },
                 ),
                 Align(

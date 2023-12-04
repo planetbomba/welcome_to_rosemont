@@ -79,7 +79,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(
             'THINGS TO DO',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -133,9 +133,9 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                               color: Colors.white,
                               boxShadow: const [
                                 BoxShadow(
-                                  blurRadius: 4.0,
+                                  blurRadius: 10.0,
                                   color: Color(0x2B202529),
-                                  offset: Offset(0.0, 2.0),
+                                  spreadRadius: 4.0,
                                 )
                               ],
                               borderRadius: BorderRadius.circular(12.0),
@@ -144,104 +144,107 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 10.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 8.0),
-                                              child: Text(
-                                                getJsonField(
-                                                  eventItem,
-                                                  r'''$.title''',
-                                                ).toString(),
-                                                maxLines: 3,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              const Color(0xFF101213),
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                            Text(
-                                              getJsonField(
-                                                eventItem,
-                                                r'''$.start_date''',
-                                              ).toString(),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: const Color(0xFF57636C),
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                            ),
-                                            Text(
-                                              getJsonField(
-                                                eventItem,
-                                                r'''$.location''',
-                                              ).toString(),
-                                              textAlign: TextAlign.start,
-                                              style: GoogleFonts.getFont(
-                                                'Outfit',
-                                                color: const Color(0xFF101213),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(12.0),
+                                    topRight: Radius.circular(12.0),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    fadeInDuration: const Duration(milliseconds: 500),
+                                    fadeOutDuration:
+                                        const Duration(milliseconds: 500),
+                                    imageUrl: getJsonField(
+                                      eventItem,
+                                      r'''$.event_image''',
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: const BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(0.0),
-                                          topRight: Radius.circular(12.0),
-                                        ),
-                                        child: CachedNetworkImage(
-                                          fadeInDuration:
-                                              const Duration(milliseconds: 500),
-                                          fadeOutDuration:
-                                              const Duration(milliseconds: 500),
-                                          imageUrl: getJsonField(
-                                            eventItem,
-                                            r'''$.event_image''',
+                                    fit: BoxFit.cover,
+                                    errorWidget: (context, error, stackTrace) =>
+                                        Image.asset(
+                                      'assets/images/error_image.png',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(12.0),
+                                      bottomRight: Radius.circular(12.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(0.0),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 5.0, 12.0, 12.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 8.0),
+                                          child: Text(
+                                            getJsonField(
+                                              eventItem,
+                                              r'''$.title''',
+                                            ).toString(),
+                                            maxLines: 3,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: const Color(0xFF101213),
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                           ),
-                                          width: 125.0,
-                                          fit: BoxFit.cover,
                                         ),
-                                      ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 20.0),
+                                          child: Text(
+                                            getJsonField(
+                                              eventItem,
+                                              r'''$.start_date''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: const Color(0xFF57636C),
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                        Text(
+                                          getJsonField(
+                                            eventItem,
+                                            r'''$.location''',
+                                          ).toString(),
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.getFont(
+                                            'Outfit',
+                                            color: FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14.0,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ].divide(const SizedBox(width: 10.0)),
+                                  ),
                                 ),
                               ],
                             ),

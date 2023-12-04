@@ -70,6 +70,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ThingsToDo',
               path: 'thingsToDo',
               builder: (context, params) => const ThingsToDoWidget(),
+            ),
+            FFRoute(
+              name: 'EatPage',
+              path: 'eatPage',
+              builder: (context, params) => const EatPageWidget(),
+            ),
+            FFRoute(
+              name: 'SleepPage',
+              path: 'sleepPage',
+              builder: (context, params) => const SleepPageWidget(),
+            ),
+            FFRoute(
+              name: 'NewsPage',
+              path: 'newsPage',
+              builder: (context, params) => const NewsPageWidget(),
+            ),
+            FFRoute(
+              name: 'EventDetailPage',
+              path: 'eventDetailPage',
+              builder: (context, params) => const EventDetailPageWidget(),
+            ),
+            FFRoute(
+              name: 'EatDetailPage',
+              path: 'eatDetailPage',
+              builder: (context, params) => const EatDetailPageWidget(),
+            ),
+            FFRoute(
+              name: 'SleepDetailPage',
+              path: 'sleepDetailPage',
+              builder: (context, params) => const SleepDetailPageWidget(),
+            ),
+            FFRoute(
+              name: 'NewsDetailPage',
+              path: 'newsDetailPage',
+              builder: (context, params) => const NewsDetailPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

@@ -33,7 +33,8 @@ class ThingsToDoEventsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Things to Do Events',
-      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/events',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/events/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
