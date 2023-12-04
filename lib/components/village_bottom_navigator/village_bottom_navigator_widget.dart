@@ -6,7 +6,15 @@ import 'village_bottom_navigator_model.dart';
 export 'village_bottom_navigator_model.dart';
 
 class VillageBottomNavigatorWidget extends StatefulWidget {
-  const VillageBottomNavigatorWidget({super.key});
+  const VillageBottomNavigatorWidget({
+    super.key,
+    int? selectedPageIndex,
+    bool? hidden,
+  })  : selectedPageIndex = selectedPageIndex ?? 1,
+        hidden = hidden ?? false;
+
+  final int selectedPageIndex;
+  final bool hidden;
 
   @override
   _VillageBottomNavigatorWidgetState createState() =>
@@ -52,42 +60,45 @@ class _VillageBottomNavigatorWidgetState
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                FlutterFlowIconButton(
-                  borderColor: FlutterFlowTheme.of(context).primary,
-                  borderRadius: 20.0,
-                  borderWidth: 1.0,
-                  buttonSize: 40.0,
-                  icon: Icon(
-                    Icons.cottage,
-                    color: FlutterFlowTheme.of(context).white,
-                    size: 30.0,
+            Opacity(
+              opacity: widget.selectedPageIndex == 1 ? 1.0 : 0.5,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FlutterFlowIconButton(
+                    borderColor: FlutterFlowTheme.of(context).primary,
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.cottage,
+                      color: FlutterFlowTheme.of(context).white,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      context.goNamed(
+                        'HomePage',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: const TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
                   ),
-                  onPressed: () async {
-                    context.goNamed(
-                      'HomePage',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
+                  Text(
+                    'HOME',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).white,
                         ),
-                      },
-                    );
-                  },
-                ),
-                Text(
-                  'HOME',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).white,
-                      ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
             Column(
               mainAxisSize: MainAxisSize.max,

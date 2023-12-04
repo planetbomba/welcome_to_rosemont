@@ -807,7 +807,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: wrapWithModel(
                 model: _model.villageBottomNavigatorModel,
                 updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+                child: const VillageBottomNavigatorWidget(
+                  selectedPageIndex: 1,
+                  hidden: false,
+                ),
               ),
             ),
           ],

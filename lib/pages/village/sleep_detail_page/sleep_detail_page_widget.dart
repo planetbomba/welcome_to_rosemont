@@ -64,24 +64,21 @@ class _SleepDetailPageWidgetState extends State<SleepDetailPageWidget> {
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Stack(
-            children: [
-              const Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [],
+        body: Stack(
+          children: [
+            const Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [],
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0.00, 1.00),
+              child: wrapWithModel(
+                model: _model.villageBottomNavigatorModel,
+                updateCallback: () => setState(() {}),
+                child: const VillageBottomNavigatorWidget(),
               ),
-              Align(
-                alignment: const AlignmentDirectional(0.00, 1.00),
-                child: wrapWithModel(
-                  model: _model.villageBottomNavigatorModel,
-                  updateCallback: () => setState(() {}),
-                  child: const VillageBottomNavigatorWidget(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
