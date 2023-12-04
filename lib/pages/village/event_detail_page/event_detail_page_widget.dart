@@ -1,8 +1,8 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_youtube_player.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -75,259 +75,262 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
           );
         }
         final eventDetailPageThingsToDoSingleEventResponse = snapshot.data!;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primary,
-              automaticallyImplyLeading: true,
-              title: Text(
-                'EVENT DETAILS',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+        return YoutubeFullScreenWrapper(
+          child: GestureDetector(
+            onTap: () => _model.unfocusNode.canRequestFocus
+                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                : FocusScope.of(context).unfocus(),
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              appBar: AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                automaticallyImplyLeading: true,
+                title: Text(
+                  'EVENT DETAILS',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                actions: const [],
+                centerTitle: false,
+                elevation: 2.0,
               ),
-              actions: const [],
-              centerTitle: false,
-              elevation: 2.0,
-            ),
-            body: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: CachedNetworkImage(
-                          fadeInDuration: const Duration(milliseconds: 500),
-                          fadeOutDuration: const Duration(milliseconds: 500),
-                          imageUrl: getJsonField(
-                            eventDetailPageThingsToDoSingleEventResponse
-                                .jsonBody,
-                            r'''$.event_image''',
-                          ),
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          errorWidget: (context, error, stackTrace) =>
-                              Image.asset(
-                            'assets/images/error_image.png',
+              body: Stack(
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 500),
+                            fadeOutDuration: const Duration(milliseconds: 500),
+                            imageUrl: getJsonField(
+                              eventDetailPageThingsToDoSingleEventResponse
+                                  .jsonBody,
+                              r'''$.event_image''',
+                            ),
                             width: double.infinity,
                             fit: BoxFit.cover,
+                            errorWidget: (context, error, stackTrace) =>
+                                Image.asset(
+                              'assets/images/error_image.png',
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 16.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Text(
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 16.0, 16.0, 16.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    getJsonField(
+                                      eventDetailPageThingsToDoSingleEventResponse
+                                          .jsonBody,
+                                      r'''$.title''',
+                                    ).toString(),
+                                    maxLines: 3,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                ),
+                                Text(
                                   getJsonField(
                                     eventDetailPageThingsToDoSingleEventResponse
                                         .jsonBody,
-                                    r'''$.title''',
+                                    r'''$.start_date''',
                                   ).toString(),
-                                  maxLines: 3,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        fontSize: 20.0,
+                                            .secondary,
+                                        fontSize: 18.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                              ),
-                              Text(
-                                getJsonField(
-                                  eventDetailPageThingsToDoSingleEventResponse
-                                      .jsonBody,
-                                  r'''$.start_date''',
-                                ).toString(),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 20.0),
-                                child: Text(
-                                  getJsonField(
-                                    eventDetailPageThingsToDoSingleEventResponse
-                                        .jsonBody,
-                                    r'''$.times''',
-                                  ).toString(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .grayIcon,
-                                        fontSize: 16.0,
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: Text(
+                                    getJsonField(
+                                      eventDetailPageThingsToDoSingleEventResponse
+                                          .jsonBody,
+                                      r'''$.times''',
+                                    ).toString(),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .grayIcon,
+                                          fontSize: 16.0,
+                                        ),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 5.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    if (getJsonField(
-                                          eventDetailPageThingsToDoSingleEventResponse
-                                              .jsonBody,
-                                          r'''$.permalink''',
-                                        ) !=
-                                        null)
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          await launchURL(getJsonField(
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      if (getJsonField(
                                             eventDetailPageThingsToDoSingleEventResponse
                                                 .jsonBody,
                                             r'''$.permalink''',
-                                          ).toString());
-                                        },
-                                        text: 'LEARN MORE',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Poppins',
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: const BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
+                                          ) !=
+                                          null)
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            await launchURL(getJsonField(
+                                              eventDetailPageThingsToDoSingleEventResponse
+                                                  .jsonBody,
+                                              r'''$.permalink''',
+                                            ).toString());
+                                          },
+                                          text: 'LEARN MORE',
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
                                         ),
-                                      ),
-                                    if (functions.notBlank(getJsonField(
-                                          eventDetailPageThingsToDoSingleEventResponse
-                                              .jsonBody,
-                                          r'''$.ticket_link''',
-                                        ).toString()) ??
-                                        true)
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          await launchURL(getJsonField(
+                                      if (functions.notBlank(getJsonField(
                                             eventDetailPageThingsToDoSingleEventResponse
                                                 .jsonBody,
                                             r'''$.ticket_link''',
-                                          ).toString());
-                                        },
-                                        text: 'GET TICKETS',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .customColor1,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Poppins',
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: const BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
+                                          ).toString()) ??
+                                          true)
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            await launchURL(getJsonField(
+                                              eventDetailPageThingsToDoSingleEventResponse
+                                                  .jsonBody,
+                                              r'''$.ticket_link''',
+                                            ).toString());
+                                          },
+                                          text: 'GET TICKETS',
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor1,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
                                         ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Html(
-                                  data: getJsonField(
-                                    eventDetailPageThingsToDoSingleEventResponse
-                                        .jsonBody,
-                                    r'''$.event_description''',
-                                  ).toString(),
-                                ),
-                              ),
-                              if (functions.notBlank(getJsonField(
-                                    eventDetailPageThingsToDoSingleEventResponse
-                                        .jsonBody,
-                                    r'''$.video_embed''',
-                                  ).toString()) ??
-                                  true)
-                                FlutterFlowVideoPlayer(
-                                  path: getJsonField(
-                                    eventDetailPageThingsToDoSingleEventResponse
-                                        .jsonBody,
-                                    r'''$.video_embed''',
+                                    ],
                                   ),
-                                  videoType: VideoType.network,
-                                  width: double.infinity,
-                                  autoPlay: false,
-                                  looping: false,
-                                  showControls: true,
-                                  allowFullScreen: true,
-                                  allowPlaybackSpeedMenu: false,
                                 ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Html(
+                                    data: getJsonField(
+                                      eventDetailPageThingsToDoSingleEventResponse
+                                          .jsonBody,
+                                      r'''$.event_description''',
+                                    ).toString(),
+                                  ),
+                                ),
+                                if (functions.notBlank(getJsonField(
+                                      eventDetailPageThingsToDoSingleEventResponse
+                                          .jsonBody,
+                                      r'''$.video_embed''',
+                                    ).toString()) ??
+                                    true)
+                                  FlutterFlowYoutubePlayer(
+                                    url: getJsonField(
+                                      eventDetailPageThingsToDoSingleEventResponse
+                                          .jsonBody,
+                                      r'''$.video_embed''',
+                                    ),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    autoPlay: false,
+                                    looping: true,
+                                    mute: false,
+                                    showControls: true,
+                                    showFullScreen: true,
+                                    strictRelatedVideos: false,
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ].addToEnd(const SizedBox(height: 100.0)),
+                      ].addToEnd(const SizedBox(height: 100.0)),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
