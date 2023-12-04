@@ -3,10 +3,12 @@ import '/components/village_bottom_navigator/village_bottom_navigator_widget.dar
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'things_to_do_model.dart';
 export 'things_to_do_model.dart';
@@ -23,6 +25,8 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
   late ThingsToDoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -44,6 +48,15 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
     super.initState();
     _model = createModel(context, () => ThingsToDoModel());
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -56,6 +69,9 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
   void dispose() {
     _model.dispose();
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -278,14 +294,18 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                 );
               },
             ),
-            Align(
-              alignment: const AlignmentDirectional(0.00, 1.00),
-              child: wrapWithModel(
-                model: _model.villageBottomNavigatorModel,
-                updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+            if ((isWeb
+                    ? MediaQuery.viewInsetsOf(context).bottom > 0
+                    : _isKeyboardVisible) ==
+                false)
+              Align(
+                alignment: const AlignmentDirectional(0.00, 1.00),
+                child: wrapWithModel(
+                  model: _model.villageBottomNavigatorModel,
+                  updateCallback: () => setState(() {}),
+                  child: const VillageBottomNavigatorWidget(),
+                ),
               ),
-            ),
           ],
         ),
       ),
