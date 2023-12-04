@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -290,16 +289,6 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                     r'''$.event_description''',
                                   ).toString(),
                                 ),
-                              ),
-                              const FlutterFlowVideoPlayer(
-                                path:
-                                    'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
-                                videoType: VideoType.network,
-                                autoPlay: false,
-                                looping: true,
-                                showControls: true,
-                                allowFullScreen: true,
-                                allowPlaybackSpeedMenu: false,
                               ),
                             ],
                           ),
