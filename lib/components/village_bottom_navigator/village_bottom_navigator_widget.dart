@@ -45,6 +45,7 @@ class _VillageBottomNavigatorWidgetState
         height: 90.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primary,
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
