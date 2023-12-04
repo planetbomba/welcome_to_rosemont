@@ -214,7 +214,7 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                             await launchURL(getJsonField(
                                               eventDetailPageThingsToDoSingleEventResponse
                                                   .jsonBody,
-                                              r'''$.permalink''',
+                                              r'''$.parent_link''',
                                             ).toString());
                                           },
                                           text: 'LEARN MORE',
