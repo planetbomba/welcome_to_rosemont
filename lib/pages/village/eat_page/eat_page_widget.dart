@@ -53,11 +53,12 @@ class _EatPageWidgetState extends State<EatPageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'WHERE TO EAT',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: const [],
@@ -75,7 +76,10 @@ class _EatPageWidgetState extends State<EatPageWidget> {
               child: wrapWithModel(
                 model: _model.villageBottomNavigatorModel,
                 updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+                child: const VillageBottomNavigatorWidget(
+                  selectedPageIndex: 3,
+                  hidden: false,
+                ),
               ),
             ),
           ],

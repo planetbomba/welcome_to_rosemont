@@ -53,11 +53,12 @@ class _SleepPageWidgetState extends State<SleepPageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'WHERE TO SLEEP',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: const [],
@@ -75,7 +76,10 @@ class _SleepPageWidgetState extends State<SleepPageWidget> {
               child: wrapWithModel(
                 model: _model.villageBottomNavigatorModel,
                 updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+                child: const VillageBottomNavigatorWidget(
+                  selectedPageIndex: 4,
+                  hidden: false,
+                ),
               ),
             ),
           ],

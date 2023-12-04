@@ -57,17 +57,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
-          title: Text(
-            'WELCOME',
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Poppins',
-                  color: FlutterFlowTheme.of(context).white,
-                  fontSize: 18.0,
-                ),
+          title: Align(
+            alignment: const AlignmentDirectional(-1.00, 0.00),
+            child: Text(
+              'WELCOME TO ROSEMONT',
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Poppins',
+                    color: FlutterFlowTheme.of(context).white,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
           ),
           actions: const [],
-          centerTitle: true,
-          elevation: 4.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: Stack(
           children: [

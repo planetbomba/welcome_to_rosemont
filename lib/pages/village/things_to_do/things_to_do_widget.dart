@@ -85,12 +85,13 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Poppins',
                   color: FlutterFlowTheme.of(context).white,
-                  fontSize: 18.0,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: const [],
-          centerTitle: true,
-          elevation: 4.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: Stack(
           children: [
@@ -262,7 +263,10 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
               child: wrapWithModel(
                 model: _model.villageBottomNavigatorModel,
                 updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+                child: const VillageBottomNavigatorWidget(
+                  selectedPageIndex: 2,
+                  hidden: false,
+                ),
               ),
             ),
           ],

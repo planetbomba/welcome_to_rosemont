@@ -53,11 +53,12 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'LATEST NEWS',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           actions: const [],
@@ -75,7 +76,10 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
               child: wrapWithModel(
                 model: _model.villageBottomNavigatorModel,
                 updateCallback: () => setState(() {}),
-                child: const VillageBottomNavigatorWidget(),
+                child: const VillageBottomNavigatorWidget(
+                  selectedPageIndex: 5,
+                  hidden: false,
+                ),
               ),
             ),
           ],
