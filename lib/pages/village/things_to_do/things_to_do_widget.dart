@@ -153,7 +153,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                     Expanded(
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
+                                            10.0, 0.0, 10.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -183,44 +183,20 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                         ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 16.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  const Icon(
-                                                    Icons.access_time_rounded,
-                                                    color: Color(0xFF57636C),
-                                                    size: 20.0,
+                                            Text(
+                                              getJsonField(
+                                                eventItem,
+                                                r'''$.start_date''',
+                                              ).toString(),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: const Color(0xFF57636C),
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      getJsonField(
-                                                        eventItem,
-                                                        r'''$.start_date''',
-                                                      ).toString(),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            color: const Color(
-                                                                0xFF57636C),
-                                                            fontSize: 15.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
                                             ),
                                             Text(
                                               getJsonField(
