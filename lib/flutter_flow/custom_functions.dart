@@ -16,3 +16,7 @@ bool? notBlank(String? txt) {
     return false;
   }
 }
+
+String? makeUpper(String? input) {
+  return input?.toUpperCase();
+}

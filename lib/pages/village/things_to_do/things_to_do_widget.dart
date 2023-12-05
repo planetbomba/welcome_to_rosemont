@@ -217,8 +217,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                     0.0, 8.0, 0.0, 8.0),
                                             child: Text(
                                               getJsonField(
-                                                listViewThingsToDoEventsResponse
-                                                    .jsonBody,
+                                                eventItem,
                                                 r'''$.title''',
                                               ).toString(),
                                               maxLines: 3,

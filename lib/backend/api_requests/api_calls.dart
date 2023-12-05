@@ -82,6 +82,25 @@ class RestaurantsCall {
   }
 }
 
+class RestaurantsSingleCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Restaurants Single',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/restaurants/$id',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
