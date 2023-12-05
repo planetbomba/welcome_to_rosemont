@@ -246,91 +246,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
-                                  'assets/images/xJq7FxgHU0mxF9r1NyCuV.jpg',
-                                  width: double.infinity,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.20, 1.00),
-                              child: Container(
-                                width: double.infinity,
-                                height: 75.0,
-                                decoration: const BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0x00990000),
-                                      Color(0xB11E2429)
-                                    ],
-                                    stops: [0.0, 0.4],
-                                    begin: AlignmentDirectional(0.0, -1.0),
-                                    end: AlignmentDirectional(0, 1.0),
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(8.0),
-                                    bottomRight: Radius.circular(8.0),
-                                    topLeft: Radius.circular(0.0),
-                                    topRight: Radius.circular(0.0),
-                                  ),
-                                ),
-                                alignment: const AlignmentDirectional(0.00, 0.00),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.00, 0.65),
-                              child: Text(
-                                'ROSEMONT PERKS',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Open Sans',
-                                      color: Colors.white,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.00, 0.90),
-                              child: Text(
-                                'ROSEMONT CHAMBER OF COMMERCE',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Open Sans',
-                                      color: Colors.white,
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 200.0,
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 200.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
                                   'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
                                   width: double.infinity,
                                   height: 200.0,
@@ -367,76 +282,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               alignment: const AlignmentDirectional(0.00, 0.85),
                               child: Text(
                                 'DES CONVENTION CENTER',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Open Sans',
-                                      color: Colors.white,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 200.0,
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 200.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/UOTjj2GczfenkZPIpxwEA.jpg',
-                                  width: double.infinity,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.20, 1.00),
-                              child: Container(
-                                width: double.infinity,
-                                height: 75.0,
-                                decoration: const BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0x00990000),
-                                      Color(0xB11E2429)
-                                    ],
-                                    stops: [0.0, 0.4],
-                                    begin: AlignmentDirectional(0.0, -1.0),
-                                    end: AlignmentDirectional(0, 1.0),
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(8.0),
-                                    bottomRight: Radius.circular(8.0),
-                                    topLeft: Radius.circular(0.0),
-                                    topRight: Radius.circular(0.0),
-                                  ),
-                                ),
-                                alignment: const AlignmentDirectional(0.00, 0.00),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.00, 0.85),
-                              child: Text(
-                                'SHOW YOUR BADGE PROGRAM',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -541,76 +386,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
-                                  'assets/images/oiIc_lxL_EjyJFeW6Tehy.jpg',
-                                  width: double.infinity,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.20, 1.00),
-                              child: Container(
-                                width: double.infinity,
-                                height: 75.0,
-                                decoration: const BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0x00990000),
-                                      Color(0xB11E2429)
-                                    ],
-                                    stops: [0.0, 0.4],
-                                    begin: AlignmentDirectional(0.0, -1.0),
-                                    end: AlignmentDirectional(0, 1.0),
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(8.0),
-                                    bottomRight: Radius.circular(8.0),
-                                    topLeft: Radius.circular(0.0),
-                                    topRight: Radius.circular(0.0),
-                                  ),
-                                ),
-                                alignment: const AlignmentDirectional(0.00, 0.00),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.00, 0.85),
-                              child: Text(
-                                'PARKWAY BANK PARK',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Open Sans',
-                                      color: Colors.white,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 200.0,
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 200.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
                                   'assets/images/iiWzvM-cjxTeEyGPvwwXd.jpg',
                                   width: double.infinity,
                                   height: 200.0,
@@ -647,6 +422,76 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               alignment: const AlignmentDirectional(0.00, 0.85),
                               child: Text(
                                 'ROSEMONT THEATRE',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: Colors.white,
+                                      fontSize: 22.0,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 200.0,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 200.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/oiIc_lxL_EjyJFeW6Tehy.jpg',
+                                  width: double.infinity,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: const AlignmentDirectional(0.20, 1.00),
+                              child: Container(
+                                width: double.infinity,
+                                height: 75.0,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0x00990000),
+                                      Color(0xB11E2429)
+                                    ],
+                                    stops: [0.0, 0.4],
+                                    begin: AlignmentDirectional(0.0, -1.0),
+                                    end: AlignmentDirectional(0, 1.0),
+                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(8.0),
+                                    bottomRight: Radius.circular(8.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
+                                ),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
+                              ),
+                            ),
+                            Align(
+                              alignment: const AlignmentDirectional(0.00, 0.85),
+                              child: Text(
+                                'PARKWAY BANK PARK',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

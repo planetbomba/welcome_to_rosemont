@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -8,6 +9,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:share_plus/share_plus.dart';
 import 'event_detail_page_model.dart';
 export 'event_detail_page_model.dart';
 
@@ -106,25 +108,64 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 500),
-                            fadeOutDuration: const Duration(milliseconds: 500),
-                            imageUrl: getJsonField(
-                              eventDetailPageThingsToDoSingleEventResponse
-                                  .jsonBody,
-                              r'''$.event_image''',
+                        Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: CachedNetworkImage(
+                                fadeInDuration: const Duration(milliseconds: 500),
+                                fadeOutDuration: const Duration(milliseconds: 500),
+                                imageUrl: getJsonField(
+                                  eventDetailPageThingsToDoSingleEventResponse
+                                      .jsonBody,
+                                  r'''$.event_image''',
+                                ),
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                errorWidget: (context, error, stackTrace) =>
+                                    Image.asset(
+                                  'assets/images/error_image.png',
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            errorWidget: (context, error, stackTrace) =>
-                                Image.asset(
-                              'assets/images/error_image.png',
-                              width: double.infinity,
-                              fit: BoxFit.cover,
+                            Align(
+                              alignment: const AlignmentDirectional(1.00, 0.00),
+                              child: Builder(
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 24.0, 24.0, 0.0),
+                                  child: FlutterFlowIconButton(
+                                    borderRadius: 25.0,
+                                    borderWidth: 0.0,
+                                    buttonSize: 50.0,
+                                    fillColor: const Color(0xBF000000),
+                                    icon: Icon(
+                                      Icons.ios_share,
+                                      color: FlutterFlowTheme.of(context).white,
+                                      size: 30.0,
+                                    ),
+                                    onPressed: () async {
+                                      await Share.share(
+                                        '${getJsonField(
+                                          eventDetailPageThingsToDoSingleEventResponse
+                                              .jsonBody,
+                                          r'''$.title''',
+                                        ).toString()}\\n${getJsonField(
+                                          eventDetailPageThingsToDoSingleEventResponse
+                                              .jsonBody,
+                                          r'''$.parent_link''',
+                                        ).toString()}',
+                                        sharePositionOrigin:
+                                            getWidgetBoundingBox(context),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
