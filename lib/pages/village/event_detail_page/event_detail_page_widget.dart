@@ -108,64 +108,25 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 500),
-                                fadeOutDuration: const Duration(milliseconds: 500),
-                                imageUrl: getJsonField(
-                                  eventDetailPageThingsToDoSingleEventResponse
-                                      .jsonBody,
-                                  r'''$.event_image''',
-                                ),
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                                errorWidget: (context, error, stackTrace) =>
-                                    Image.asset(
-                                  'assets/images/error_image.png',
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 500),
+                            fadeOutDuration: const Duration(milliseconds: 500),
+                            imageUrl: getJsonField(
+                              eventDetailPageThingsToDoSingleEventResponse
+                                  .jsonBody,
+                              r'''$.event_image''',
                             ),
-                            Align(
-                              alignment: const AlignmentDirectional(1.00, 0.00),
-                              child: Builder(
-                                builder: (context) => Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 24.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderRadius: 25.0,
-                                    borderWidth: 0.0,
-                                    buttonSize: 50.0,
-                                    fillColor: const Color(0xBF000000),
-                                    icon: Icon(
-                                      Icons.ios_share,
-                                      color: FlutterFlowTheme.of(context).white,
-                                      size: 30.0,
-                                    ),
-                                    onPressed: () async {
-                                      await Share.share(
-                                        '${getJsonField(
-                                          eventDetailPageThingsToDoSingleEventResponse
-                                              .jsonBody,
-                                          r'''$.title''',
-                                        ).toString()}\\n${getJsonField(
-                                          eventDetailPageThingsToDoSingleEventResponse
-                                              .jsonBody,
-                                          r'''$.parent_link''',
-                                        ).toString()}',
-                                        sharePositionOrigin:
-                                            getWidgetBoundingBox(context),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorWidget: (context, error, stackTrace) =>
+                                Image.asset(
+                              'assets/images/error_image.png',
+                              width: double.infinity,
+                              fit: BoxFit.cover,
                             ),
-                          ],
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
@@ -286,6 +247,41 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                         ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.00, 1.00),
+                                        child: Builder(
+                                          builder: (context) =>
+                                              FlutterFlowIconButton(
+                                            borderRadius: 25.0,
+                                            borderWidth: 0.0,
+                                            buttonSize: 50.0,
+                                            icon: Icon(
+                                              Icons.ios_share,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              size: 30.0,
+                                            ),
+                                            onPressed: () async {
+                                              await Share.share(
+                                                '${getJsonField(
+                                                  eventDetailPageThingsToDoSingleEventResponse
+                                                      .jsonBody,
+                                                  r'''$.title''',
+                                                ).toString()} >>  ${getJsonField(
+                                                  eventDetailPageThingsToDoSingleEventResponse
+                                                      .jsonBody,
+                                                  r'''$.parent_link''',
+                                                ).toString()}',
+                                                sharePositionOrigin:
+                                                    getWidgetBoundingBox(
+                                                        context),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
                                       if (functions.notBlank(getJsonField(
                                             eventDetailPageThingsToDoSingleEventResponse
                                                 .jsonBody,

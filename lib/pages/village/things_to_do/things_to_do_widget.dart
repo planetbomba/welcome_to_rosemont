@@ -217,7 +217,8 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                     0.0, 8.0, 0.0, 8.0),
                                             child: Text(
                                               getJsonField(
-                                                eventItem,
+                                                listViewThingsToDoEventsResponse
+                                                    .jsonBody,
                                                 r'''$.title''',
                                               ).toString(),
                                               maxLines: 3,
@@ -226,8 +227,10 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                   .titleMedium
                                                   .override(
                                                     fontFamily: 'Outfit',
-                                                    color: const Color(0xFF101213),
-                                                    fontSize: 16.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    fontSize: 18.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                             ),
@@ -246,8 +249,10 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                   .bodySmall
                                                   .override(
                                                     fontFamily: 'Outfit',
-                                                    color: const Color(0xFF57636C),
-                                                    fontSize: 15.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary,
+                                                    fontSize: 16.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                             ),
@@ -264,7 +269,7 @@ class _ThingsToDoWidgetState extends State<ThingsToDoWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .grayIcon,
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 14.0,
+                                              fontSize: 16.0,
                                             ),
                                           ),
                                         ],
