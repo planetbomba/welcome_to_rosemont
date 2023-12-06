@@ -252,6 +252,8 @@ class _EatPageWidgetState extends State<EatPageWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           lineHeight: 1.2,
                                                         ),
                                                   ),
@@ -263,6 +265,8 @@ class _EatPageWidgetState extends State<EatPageWidget>
                                                     restaurantsItem,
                                                     r'''$.address_and_phone''',
                                                   ),
+                                                  customStyle:
+                                                      '<style>\nbody, html {\nmargin:0;\npadding:0;\nline-height:1.2;\ncolor:#333333;\nFont-size: 15px;\n}\n</style>\n',
                                                 ),
                                               ],
                                             ),

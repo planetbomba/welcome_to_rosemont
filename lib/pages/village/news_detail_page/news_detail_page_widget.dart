@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/village_bottom_navigator/village_bottom_navigator_widget.dart';
 import '/components/web_content/web_content_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -224,15 +223,7 @@ class _NewsDetailPageWidgetState extends State<NewsDetailPageWidget> {
                           ),
                         ),
                       ),
-                    ].addToEnd(const SizedBox(height: 100.0)),
-                  ),
-                ),
-                Align(
-                  alignment: const AlignmentDirectional(0.00, 1.00),
-                  child: wrapWithModel(
-                    model: _model.villageBottomNavigatorModel,
-                    updateCallback: () => setState(() {}),
-                    child: const VillageBottomNavigatorWidget(),
+                    ].addToEnd(const SizedBox(height: 50.0)),
                   ),
                 ),
               ],

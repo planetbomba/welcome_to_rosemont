@@ -216,6 +216,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    fontSize: 18.0,
+                                    letterSpacing: 2.0,
                                     fontWeight: FontWeight.w800,
                                   ),
                           elevation: 3.0,

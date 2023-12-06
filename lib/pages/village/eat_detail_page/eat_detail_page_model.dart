@@ -1,4 +1,3 @@
-import '/components/village_bottom_navigator/village_bottom_navigator_widget.dart';
 import '/components/web_content/web_content_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'eat_detail_page_widget.dart' show EatDetailPageWidget;
@@ -12,8 +11,6 @@ class EatDetailPageModel extends FlutterFlowModel<EatDetailPageWidget> {
   late WebContentModel webContentModel1;
   // Model for webContent component.
   late WebContentModel webContentModel2;
-  // Model for VillageBottomNavigator component.
-  late VillageBottomNavigatorModel villageBottomNavigatorModel;
 
   /// Initialization and disposal methods.
 
@@ -21,8 +18,6 @@ class EatDetailPageModel extends FlutterFlowModel<EatDetailPageWidget> {
   void initState(BuildContext context) {
     webContentModel1 = createModel(context, () => WebContentModel());
     webContentModel2 = createModel(context, () => WebContentModel());
-    villageBottomNavigatorModel =
-        createModel(context, () => VillageBottomNavigatorModel());
   }
 
   @override
@@ -30,7 +25,6 @@ class EatDetailPageModel extends FlutterFlowModel<EatDetailPageWidget> {
     unfocusNode.dispose();
     webContentModel1.dispose();
     webContentModel2.dispose();
-    villageBottomNavigatorModel.dispose();
   }
 
   /// Action blocks are added here.

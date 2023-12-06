@@ -363,7 +363,7 @@ class _EventDetailPageWidgetState extends State<EventDetailPageWidget> {
                             ),
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 100.0)),
+                      ].addToEnd(const SizedBox(height: 50.0)),
                     ),
                   ),
                 ],
