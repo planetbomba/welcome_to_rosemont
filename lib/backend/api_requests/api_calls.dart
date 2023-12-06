@@ -137,6 +137,25 @@ class HotelsSingleCall {
   }
 }
 
+class NewsSingleCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'News Single',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/news/$id',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class NewsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(

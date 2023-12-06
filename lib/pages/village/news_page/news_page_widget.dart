@@ -72,9 +72,10 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
         body: Stack(
           children: [
             FutureBuilder<ApiCallResponse>(
-              future: (_model.apiRequestCompleter ??=
-                      Completer<ApiCallResponse>()..complete(NewsCall.call()))
-                  .future,
+              future:
+                  (_model.apiRequestCompleter ??= Completer<ApiCallResponse>()
+                        ..complete(NewsSingleCall.call()))
+                      .future,
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -90,11 +91,11 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
                     ),
                   );
                 }
-                final listViewNewsResponse = snapshot.data!;
+                final listViewNewsSingleResponse = snapshot.data!;
                 return Builder(
                   builder: (context) {
                     final article = getJsonField(
-                      listViewNewsResponse.jsonBody,
+                      listViewNewsSingleResponse.jsonBody,
                       r'''$''',
                     ).toList();
                     return RefreshIndicator(
@@ -103,7 +104,12 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
                         await _model.waitForApiRequestCompleted();
                       },
                       child: ListView.builder(
-                        padding: EdgeInsets.zero,
+                        padding: const EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          100.0,
+                        ),
                         scrollDirection: Axis.vertical,
                         itemCount: article.length,
                         itemBuilder: (context, articleIndex) {
@@ -111,103 +117,128 @@ class _NewsPageWidgetState extends State<NewsPageWidget> {
                           return Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 16.0),
-                            child: Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 4.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(0.0),
-                                      bottomRight: Radius.circular(0.0),
-                                      topLeft: Radius.circular(8.0),
-                                      topRight: Radius.circular(8.0),
-                                    ),
-                                    child: CachedNetworkImage(
-                                      fadeInDuration:
-                                          const Duration(milliseconds: 500),
-                                      fadeOutDuration:
-                                          const Duration(milliseconds: 500),
-                                      imageUrl: getJsonField(
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'NewsDetailPage',
+                                  queryParameters: {
+                                    'id': serializeParam(
+                                      getJsonField(
                                         articleItem,
-                                        r'''$.image''',
+                                        r'''$.id''',
+                                      ).toString(),
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 4.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(0.0),
+                                        bottomRight: Radius.circular(0.0),
+                                        topLeft: Radius.circular(8.0),
+                                        topRight: Radius.circular(8.0),
                                       ),
-                                      width: 300.0,
-                                      height: 200.0,
-                                      fit: BoxFit.cover,
-                                      errorWidget:
-                                          (context, error, stackTrace) =>
-                                              Image.asset(
-                                        'assets/images/error_image.png',
+                                      child: CachedNetworkImage(
+                                        fadeInDuration:
+                                            const Duration(milliseconds: 500),
+                                        fadeOutDuration:
+                                            const Duration(milliseconds: 500),
+                                        imageUrl: getJsonField(
+                                          articleItem,
+                                          r'''$.image''',
+                                        ),
                                         width: 300.0,
                                         height: 200.0,
                                         fit: BoxFit.cover,
+                                        errorWidget:
+                                            (context, error, stackTrace) =>
+                                                Image.asset(
+                                          'assets/images/error_image.png',
+                                          width: 300.0,
+                                          height: 200.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 8.0, 8.0, 8.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 12.0),
-                                          child: Text(
-                                            getJsonField(
-                                              articleItem,
-                                              r'''$.title''',
-                                            ).toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleSmall
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  fontWeight: FontWeight.bold,
-                                                  lineHeight: 1.0,
-                                                ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.00, 1.00),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              functions.makeUpper(getJsonField(
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 8.0, 8.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 12.0),
+                                            child: Text(
+                                              getJsonField(
                                                 articleItem,
-                                                r'''$.date''',
-                                              ).toString()),
-                                              '.',
+                                                r'''$.title''',
+                                              ).toString(),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    fontWeight: FontWeight.bold,
+                                                    lineHeight: 1.0,
+                                                  ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  fontSize: 13.0,
-                                                  lineHeight: 0.9,
-                                                ),
                                           ),
-                                        ),
-                                      ],
+                                          Align(
+                                            alignment: const AlignmentDirectional(
+                                                1.00, 1.00),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                functions
+                                                    .makeUpper(getJsonField(
+                                                  articleItem,
+                                                  r'''$.date''',
+                                                ).toString()),
+                                                '.',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        fontSize: 13.0,
+                                                        lineHeight: 0.9,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           );
