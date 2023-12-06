@@ -268,6 +268,22 @@ class _EatPageWidgetState extends State<EatPageWidget>
                                                   customStyle:
                                                       '<style>\nbody, html {\nmargin:0;\npadding:0;\nline-height:1.2;\ncolor:#333333;\nFont-size: 15px;\n}\n</style>\n',
                                                 ),
+                                                Text(
+                                                  getJsonField(
+                                                    restaurantsItem,
+                                                    r'''$.address_and_phone''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                                ),
                                               ],
                                             ),
                                           ),
