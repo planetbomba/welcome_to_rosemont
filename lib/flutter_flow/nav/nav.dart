@@ -103,7 +103,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'SleepDetailPage',
               path: 'sleepDetailPage',
-              builder: (context, params) => const SleepDetailPageWidget(),
+              builder: (context, params) => SleepDetailPageWidget(
+                id: params.getParam('id', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'NewsDetailPage',

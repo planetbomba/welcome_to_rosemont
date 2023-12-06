@@ -101,6 +101,59 @@ class RestaurantsSingleCall {
   }
 }
 
+class HotelsCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Hotels',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/hotels',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class HotelsSingleCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Hotels Single',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/hotels/$id',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class NewsCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'News',
+      apiUrl:
+          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/news',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
