@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/village_bottom_navigator/village_bottom_navigator_widget.dart';
-import '/components/web_content/web_content_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -173,6 +172,8 @@ class _EatPageWidgetState extends State<EatPageWidget>
                                       8.0, 0.0, 8.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         width: 125.0,
@@ -206,85 +207,92 @@ class _EatPageWidgetState extends State<EatPageWidget>
                                         ),
                                       ),
                                       Expanded(
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius: const BorderRadius.only(
-                                              bottomLeft: Radius.circular(12.0),
-                                              bottomRight:
-                                                  Radius.circular(12.0),
-                                              topLeft: Radius.circular(0.0),
-                                              topRight: Radius.circular(0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 8.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      functions.makeUpper(
-                                                          getJsonField(
-                                                        restaurantsItem,
-                                                        r'''$.title''',
-                                                      ).toString()),
-                                                      '.',
-                                                    ),
-                                                    maxLines: 2,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          lineHeight: 1.2,
+                                            alignment: const AlignmentDirectional(
+                                                0.00, 0.00),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.00, 0.00),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 8.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          functions.makeUpper(
+                                                              getJsonField(
+                                                            restaurantsItem,
+                                                            r'''$.title''',
+                                                          ).toString()),
+                                                          '.',
                                                         ),
-                                                  ),
-                                                ),
-                                                WebContentWidget(
-                                                  key: Key(
-                                                      'Keymr9_${restaurantsIndex}_of_${restaurants.length}'),
-                                                  parameter1: getJsonField(
-                                                    restaurantsItem,
-                                                    r'''$.address_and_phone''',
-                                                  ),
-                                                  customStyle:
-                                                      '<style>\nbody, html {\nmargin:0;\npadding:0;\nline-height:1.2;\ncolor:#333333;\nFont-size: 15px;\n}\n</style>\n',
-                                                ),
-                                                Text(
-                                                  getJsonField(
-                                                    restaurantsItem,
-                                                    r'''$.address_and_phone''',
-                                                  ).toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
+                                                        maxLines: 2,
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  lineHeight:
+                                                                      1.2,
+                                                                ),
                                                       ),
+                                                    ),
+                                                    Text(
+                                                      getJsonField(
+                                                        restaurantsItem,
+                                                        r'''$.address_and_phone''',
+                                                      ).toString(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                              ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ),
                                         ),
