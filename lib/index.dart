@@ -14,3 +14,5 @@ export '/pages/village/sleep_detail_page/sleep_detail_page_widget.dart'
     show SleepDetailPageWidget;
 export '/pages/village/news_detail_page/news_detail_page_widget.dart'
     show NewsDetailPageWidget;
+export '/pages/d_e_convention/d_e_s_home/d_e_s_home_widget.dart'
+    show DESHomeWidget;

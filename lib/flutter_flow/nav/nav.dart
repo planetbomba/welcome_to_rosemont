@@ -113,6 +113,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => NewsDetailPageWidget(
                 id: params.getParam('id', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'DESHome',
+              path: 'dESHome',
+              builder: (context, params) => const DESHomeWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

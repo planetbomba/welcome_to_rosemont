@@ -245,13 +245,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     .secondaryBackground,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
-                                  width: double.infinity,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.goNamed(
+                                    'DESHome',
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: const TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
+                                    width: double.infinity,
+                                    height: 200.0,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
