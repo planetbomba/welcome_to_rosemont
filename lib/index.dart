@@ -16,3 +16,9 @@ export '/pages/village/news_detail_page/news_detail_page_widget.dart'
     show NewsDetailPageWidget;
 export '/pages/d_e_convention/d_e_s_home/d_e_s_home_widget.dart'
     show DESHomeWidget;
+export '/pages/d_e_convention/d_e_s_events/d_e_s_events_widget.dart'
+    show DESEventsWidget;
+export '/pages/d_e_convention/d_e_s_badge/d_e_s_badge_widget.dart'
+    show DESBadgeWidget;
+export '/pages/d_e_convention/d_e_s_contact/d_e_s_contact_widget.dart'
+    show DESContactWidget;

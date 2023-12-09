@@ -118,6 +118,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'DESHome',
               path: 'dESHome',
               builder: (context, params) => const DESHomeWidget(),
+            ),
+            FFRoute(
+              name: 'DESEvents',
+              path: 'dESEvents',
+              builder: (context, params) => const DESEventsWidget(),
+            ),
+            FFRoute(
+              name: 'DESBadge',
+              path: 'dESBadge',
+              builder: (context, params) => const DESBadgeWidget(),
+            ),
+            FFRoute(
+              name: 'DESContact',
+              path: 'dESContact',
+              builder: (context, params) => const DESContactWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

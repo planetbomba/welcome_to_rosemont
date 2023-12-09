@@ -77,7 +77,7 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                     ),
                     onPressed: () async {
                       context.goNamed(
-                        'HomePage',
+                        'DESHome',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
@@ -116,7 +116,7 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                     ),
                     onPressed: () async {
                       context.goNamed(
-                        'ThingsToDo',
+                        'DESEvents',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
@@ -188,13 +188,13 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                     borderWidth: 0.0,
                     buttonSize: 40.0,
                     icon: Icon(
-                      Icons.bed,
+                      Icons.badge_outlined,
                       color: FlutterFlowTheme.of(context).white,
                       size: 24.0,
                     ),
                     onPressed: () async {
                       context.goNamed(
-                        'SleepPage',
+                        'DESBadge',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
@@ -208,10 +208,12 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                   Align(
                     alignment: const AlignmentDirectional(0.00, 0.00),
                     child: Text(
-                      'SLEEP',
+                      'BADGE\nPROGRAM',
+                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).white,
+                            lineHeight: 1.0,
                           ),
                     ),
                   ),
@@ -230,13 +232,13 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                     borderWidth: 0.0,
                     buttonSize: 40.0,
                     icon: Icon(
-                      Icons.newspaper_sharp,
+                      Icons.contact_phone_outlined,
                       color: FlutterFlowTheme.of(context).white,
                       size: 30.0,
                     ),
                     onPressed: () async {
                       context.goNamed(
-                        'NewsPage',
+                        'DESContact',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
@@ -250,7 +252,7 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                   Align(
                     alignment: const AlignmentDirectional(0.00, 0.00),
                     child: Text(
-                      'NEWS',
+                      'CONTACT',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).white,
@@ -260,7 +262,10 @@ class _DESBottomNavigatorWidgetState extends State<DESBottomNavigatorWidget> {
                 ],
               ),
             ),
-          ].addToStart(const SizedBox(width: 16.0)).addToEnd(const SizedBox(width: 16.0)),
+          ]
+              .divide(const SizedBox(width: 8.0))
+              .addToStart(const SizedBox(width: 8.0))
+              .addToEnd(const SizedBox(width: 8.0)),
         ),
       ),
     );
