@@ -1,10 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -39,7 +47,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const StartWidget(),
+          : StartWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -54,90 +62,73 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const StartWidget(),
+              : StartWidget(),
           routes: [
             FFRoute(
               name: 'Start',
               path: 'start',
-              builder: (context, params) => const StartWidget(),
+              builder: (context, params) => StartWidget(),
             ),
             FFRoute(
               name: 'HomePage',
               path: 'homePage',
-              builder: (context, params) => const HomePageWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomePage')
+                  : HomePageWidget(),
             ),
             FFRoute(
               name: 'ThingsToDo',
               path: 'thingsToDo',
-              builder: (context, params) => const ThingsToDoWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'ThingsToDo')
+                  : ThingsToDoWidget(),
             ),
             FFRoute(
-              name: 'EatPage',
-              path: 'eatPage',
-              builder: (context, params) => const EatPageWidget(),
+              name: 'WhereToEat',
+              path: 'whereToEat',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'WhereToEat')
+                  : WhereToEatWidget(),
             ),
             FFRoute(
-              name: 'SleepPage',
-              path: 'sleepPage',
-              builder: (context, params) => const SleepPageWidget(),
+              name: 'WhereToSleep',
+              path: 'whereToSleep',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'WhereToSleep')
+                  : WhereToSleepWidget(),
             ),
             FFRoute(
-              name: 'NewsPage',
-              path: 'newsPage',
-              builder: (context, params) => const NewsPageWidget(),
+              name: 'MORE',
+              path: 'more',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MORE')
+                  : MoreWidget(),
             ),
             FFRoute(
-              name: 'EventDetailPage',
-              path: 'eventDetailPage',
-              builder: (context, params) => EventDetailPageWidget(
-                id: params.getParam('id', ParamType.String),
+              name: 'EventDetails',
+              path: 'eventDetails',
+              builder: (context, params) => EventDetailsWidget(
+                id: params.getParam('id', ParamType.int),
               ),
             ),
             FFRoute(
-              name: 'EatDetailPage',
-              path: 'eatDetailPage',
-              builder: (context, params) => EatDetailPageWidget(
-                id: params.getParam('id', ParamType.String),
+              name: 'EatDetails',
+              path: 'eatDetails',
+              builder: (context, params) => EatDetailsWidget(),
+            ),
+            FFRoute(
+              name: 'SleepDetails',
+              path: 'sleepDetails',
+              asyncParams: {
+                'id': getDoc(['Hotels'], HotelsRecord.fromSnapshot),
+              },
+              builder: (context, params) => SleepDetailsWidget(
+                id: params.getParam('id', ParamType.Document),
               ),
-            ),
-            FFRoute(
-              name: 'SleepDetailPage',
-              path: 'sleepDetailPage',
-              builder: (context, params) => SleepDetailPageWidget(
-                id: params.getParam('id', ParamType.String),
-              ),
-            ),
-            FFRoute(
-              name: 'NewsDetailPage',
-              path: 'newsDetailPage',
-              builder: (context, params) => NewsDetailPageWidget(
-                id: params.getParam('id', ParamType.String),
-              ),
-            ),
-            FFRoute(
-              name: 'DESHome',
-              path: 'dESHome',
-              builder: (context, params) => const DESHomeWidget(),
-            ),
-            FFRoute(
-              name: 'DESEvents',
-              path: 'dESEvents',
-              builder: (context, params) => const DESEventsWidget(),
-            ),
-            FFRoute(
-              name: 'DESBadge',
-              path: 'dESBadge',
-              builder: (context, params) => const DESBadgeWidget(),
-            ),
-            FFRoute(
-              name: 'DESContact',
-              path: 'dESContact',
-              builder: (context, params) => const DESContactWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -207,6 +198,7 @@ class FFParameters {
     String paramName,
     ParamType type, [
     bool isList = false,
+    List<String>? collectionNamePath,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -220,11 +212,8 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(
-      param,
-      type,
-      isList,
-    );
+    return deserializeParam<T>(param, type, isList,
+        collectionNamePath: collectionNamePath);
   }
 }
 
@@ -249,6 +238,7 @@ class FFRoute {
         name: name,
         path: path,
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -264,13 +254,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },
@@ -291,7 +288,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -43,7 +43,7 @@
 
   <!-- Status Bar color in Safari browser (iOS) and PWA -->
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#1a1f24">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#ffffff">
 
   <link rel="manifest" href="manifest.json">
   <script>
@@ -70,7 +70,7 @@
         },
         onEntrypointLoaded: async function(engineInitializer) {
           // Initialize the Flutter engine
-          let appRunner = await engineInitializer.initializeEngine();
+          let appRunner = await engineInitializer.initializeEngine({});
           // Run the app
           await appRunner.runApp();
         }

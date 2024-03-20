@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "slider_items",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sort",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

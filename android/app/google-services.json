@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "895917733135",
+    "project_id": "welcome-to-rosemont-f4gnw2",
+    "storage_bucket": "welcome-to-rosemont-f4gnw2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895917733135:android:87fb015062c638f3d03a7a",
+        "android_client_info": {
+          "package_name": "com.rosemont.welcome"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Mwq8aDyQiW5WIRuUMTDvE0q2OpX7KGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895917733135:android:d52297bae2b9cd67d03a7a",
+        "android_client_info": {
+          "package_name": "com.rosemont.welcometorosemont"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Mwq8aDyQiW5WIRuUMTDvE0q2OpX7KGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

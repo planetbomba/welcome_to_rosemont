@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -19,22 +20,22 @@ class SliderItemsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic data(dynamic response) => getJsonField(
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
 }
 
 class ThingsToDoEventsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Things to Do Events',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/events/',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/events',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -42,61 +43,7 @@ class ThingsToDoEventsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
-    );
-  }
-}
-
-class ThingsToDoSingleEventCall {
-  static Future<ApiCallResponse> call({
-    String? id = '12382',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Things to Do Single Event',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/events/$id',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class RestaurantsCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Restaurants',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/restaurants',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class RestaurantsSingleCall {
-  static Future<ApiCallResponse> call({
-    String? id = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Restaurants Single',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/restaurants/$id',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -105,8 +52,7 @@ class HotelsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Hotels',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/hotels',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/hotels',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -114,54 +60,16 @@ class HotelsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
 
-class HotelsSingleCall {
-  static Future<ApiCallResponse> call({
-    String? id = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Hotels Single',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/hotels/$id',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class NewsSingleCall {
-  static Future<ApiCallResponse> call({
-    String? id = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'News Single',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/news/$id',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class NewsCall {
+class RestaurantsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
-      callName: 'News',
-      apiUrl:
-          'https://wordpressmu-654945-3496680.cloudwaysapps.com/wp-json/rsmt/v1/news',
+      callName: 'Restaurants',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/restaurants',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -169,6 +77,45 @@ class NewsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class RestaurantsDetailCall {
+  static Future<ApiCallResponse> call({
+    int? id,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Restaurants Detail',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/restaurants/${id}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class EventDetailCall {
+  static Future<ApiCallResponse> call({
+    int? id,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Event Detail',
+      apiUrl: 'https://rosemont.com/wp-json/rsmt/v1/events/${id}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
