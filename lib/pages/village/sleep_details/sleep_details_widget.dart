@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'sleep_details_model.dart';
 export 'sleep_details_model.dart';
 
@@ -135,9 +136,22 @@ class _SleepDetailsWidgetState extends State<SleepDetailsWidget> {
                                 ),
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 12.0),
+                          child: Text(
+                            sleepDetailsHotelsRecord.address,
+                            style: FlutterFlowTheme.of(context).bodyLarge,
+                          ),
+                        ),
                         Text(
-                          sleepDetailsHotelsRecord.address,
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          sleepDetailsHotelsRecord.phone,
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).secondary,
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -181,8 +195,9 @@ class _SleepDetailsWidgetState extends State<SleepDetailsWidget> {
                                 showLoadingIndicator: false,
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await launchURL(
+                                      sleepDetailsHotelsRecord.website);
                                 },
                                 text: 'SITE',
                                 icon: FaIcon(
@@ -212,8 +227,11 @@ class _SleepDetailsWidgetState extends State<SleepDetailsWidget> {
                                 showLoadingIndicator: false,
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await launchUrl(Uri(
+                                    scheme: 'tel',
+                                    path: sleepDetailsHotelsRecord.phone,
+                                  ));
                                 },
                                 text: 'CALL',
                                 icon: Icon(
@@ -246,8 +264,8 @@ class _SleepDetailsWidgetState extends State<SleepDetailsWidget> {
                           ),
                         ),
                         Text(
-                          sleepDetailsHotelsRecord.address,
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          sleepDetailsHotelsRecord.description,
+                          style: FlutterFlowTheme.of(context).bodyLarge,
                         ),
                       ],
                     ),
