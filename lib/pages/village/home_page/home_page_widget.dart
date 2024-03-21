@@ -153,7 +153,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   dotWidth: 16.0,
                                   dotHeight: 16.0,
                                   dotColor: Color(0xFF9E9E9E),
-                                  activeDotColor: Color(0xFF3F51B5),
+                                  activeDotColor:
+                                      FlutterFlowTheme.of(context).accent3,
                                   paintStyle: PaintingStyle.fill,
                                 ),
                               ),

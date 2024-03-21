@@ -114,7 +114,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'EatDetails',
               path: 'eatDetails',
-              builder: (context, params) => EatDetailsWidget(),
+              builder: (context, params) => EatDetailsWidget(
+                docRef: params.getParam('docRef', ParamType.DocumentReference,
+                    false, ['restaurants']),
+              ),
             ),
             FFRoute(
               name: 'SleepDetails',
