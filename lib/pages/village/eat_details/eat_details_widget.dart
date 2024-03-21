@@ -216,72 +216,77 @@ class _EatDetailsWidgetState extends State<EatDetailsWidget> {
                                 ),
                                 showLoadingIndicator: false,
                               ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  await launchURL(
-                                      eatDetailsRestaurantsRecord.website);
-                                },
-                                text: 'SITE',
-                                icon: FaIcon(
-                                  FontAwesomeIcons.globe,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color:
-                                      FlutterFlowTheme.of(context).tertiary600,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              if (eatDetailsRestaurantsRecord.website != null &&
+                                  eatDetailsRestaurantsRecord.website != '')
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    await launchURL(
+                                        eatDetailsRestaurantsRecord.website);
+                                  },
+                                  text: 'SITE',
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.globe,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                showLoadingIndicator: false,
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  await launchUrl(Uri(
-                                    scheme: 'tel',
-                                    path: eatDetailsRestaurantsRecord.phone,
-                                  ));
-                                },
-                                text: 'CALL',
-                                icon: Icon(
-                                  Icons.phone_rounded,
-                                  size: 15.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .tertiary600,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  showLoadingIndicator: false,
                                 ),
-                                showLoadingIndicator: false,
-                              ),
+                              if (eatDetailsRestaurantsRecord.phone != null &&
+                                  eatDetailsRestaurantsRecord.phone != '')
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    await launchUrl(Uri(
+                                      scheme: 'tel',
+                                      path: eatDetailsRestaurantsRecord.phone,
+                                    ));
+                                  },
+                                  text: 'CALL',
+                                  icon: Icon(
+                                    Icons.phone_rounded,
+                                    size: 15.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  showLoadingIndicator: false,
+                                ),
                             ],
                           ),
                         ),
