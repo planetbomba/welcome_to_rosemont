@@ -146,7 +146,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
@@ -169,7 +169,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
@@ -192,7 +192,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
@@ -215,7 +215,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
@@ -238,7 +238,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0,
+                    fontSize: 14.0,
                   ),
                 ),
               ],
