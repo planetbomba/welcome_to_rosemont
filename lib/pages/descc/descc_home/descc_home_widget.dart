@@ -40,7 +40,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).background,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).descc,
           iconTheme: IconThemeData(
@@ -63,111 +63,234 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('BADGE pressed ...');
-                        },
-                        text: 'SHOW YOUR BADGE',
-                        icon: Icon(
-                          Icons.badge_rounded,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).descc,
-                          textStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('des_about');
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 200.0,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 200.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
+                                width: double.infinity,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('ABOUT pressed ...');
-                        },
-                        text: 'ABOUT',
-                        icon: Icon(
-                          Icons.info,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).descc,
-                          textStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                          Align(
+                            alignment: AlignmentDirectional(0.2, 1.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0x00990000),
+                                    Color(0xB11E2429)
+                                  ],
+                                  stops: [0.0, 0.4],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(8.0),
+                                  bottomRight: Radius.circular(8.0),
+                                  topLeft: Radius.circular(0.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.85),
+                                child: Text(
+                                  'ABOUT THE DES \nCONVENTION CENTER',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Open Sans',
+                                        color: Colors.white,
+                                        fontSize: 22.0,
+                                        fontWeight: FontWeight.w800,
+                                        lineHeight: 1.0,
+                                      ),
+                                ),
+                              ),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
+                        ],
                       ),
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('CONTACT pressed ...');
-                        },
-                        text: 'CONTACT',
-                        icon: Icon(
-                          Icons.contact_mail_outlined,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).descc,
-                          textStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 200.0,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 200.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/UOTjj2GczfenkZPIpxwEA.jpg',
+                              width: double.infinity,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).noColor,
+                                  Color(0xBF101213)
+                                ],
+                                stops: [0.0, 0.6],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                            ),
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.85),
+                          child: Text(
+                            'SHOW YOUR BADGE \nPROGRAM',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w800,
+                                  lineHeight: 1.0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 200.0,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 200.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/PHyNkAUZZx57L3joLts6N.jpg',
+                              width: double.infinity,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).noColor,
+                                  Color(0xBF101213)
+                                ],
+                                stops: [0.0, 0.6],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                            ),
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.85),
+                          child: Text(
+                            'CONTACT THE \nCONVENTION CENTER',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w800,
+                                  lineHeight: 1.0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ].addToEnd(SizedBox(height: 100.0)),
+            ),
           ),
         ),
       ),

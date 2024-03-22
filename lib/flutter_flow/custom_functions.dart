@@ -35,3 +35,7 @@ Color? locationColor(String? txtLocation) {
       return Color(0xffcccccc);
   }
 }
+
+String? getImage(String imgString) {
+  return "https://api.rosemont.com/assets/" + imgString;
+}

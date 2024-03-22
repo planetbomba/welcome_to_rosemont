@@ -136,6 +136,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 initialPage: '',
                 page: DesccHomeWidget(),
               ),
+            ),
+            FFRoute(
+              name: 'des_about',
+              path: 'desAbout',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: DesAboutWidget(),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

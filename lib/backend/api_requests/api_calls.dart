@@ -8,6 +8,38 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+/// Start Rosemont Api Group Code
+
+class RosemontApiGroup {
+  static String baseUrl = 'https://api.rosemont.com';
+  static Map<String, String> headers = {};
+  static GetPageCall getPageCall = GetPageCall();
+}
+
+class GetPageCall {
+  Future<ApiCallResponse> call({
+    String? slug = '[slug]',
+    String? value = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get page',
+      apiUrl: '${RosemontApiGroup.baseUrl}/items/pages/?filter${slug}=${value}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {
+        'value': "des-about",
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End Rosemont Api Group Code
+
 class ThingsToDoEventsCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
