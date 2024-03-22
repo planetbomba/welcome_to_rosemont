@@ -49,7 +49,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
           title: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(0.0),
               child: Image.asset(
                 'assets/images/dessLogo.png',
                 height: 40.0,
@@ -65,7 +65,109 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('BADGE pressed ...');
+                        },
+                        text: 'SHOW YOUR BADGE',
+                        icon: Icon(
+                          Icons.badge_rounded,
+                          size: 15.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).descc,
+                          textStyle:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('ABOUT pressed ...');
+                        },
+                        text: 'ABOUT',
+                        icon: Icon(
+                          Icons.info,
+                          size: 15.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).descc,
+                          textStyle:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('CONTACT pressed ...');
+                        },
+                        text: 'CONTACT',
+                        icon: Icon(
+                          Icons.contact_mail_outlined,
+                          size: 15.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).descc,
+                          textStyle:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ].divide(SizedBox(width: 8.0)),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
