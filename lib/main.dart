@@ -7,6 +7,7 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -102,9 +103,16 @@ class _NavBarPageState extends State<NavBarPage> {
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
+    final MediaQueryData queryData = MediaQuery.of(context);
+
     return Scaffold(
-      body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
+      body: MediaQuery(
+          data: queryData
+              .removeViewInsets(removeBottom: true)
+              .removeViewPadding(removeBottom: true),
+          child: _currentPage ?? tabs[_currentPageName]!),
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           _currentPage = null;
@@ -113,49 +121,133 @@ class _NavBarPageState extends State<NavBarPage> {
         backgroundColor: FlutterFlowTheme.of(context).primary,
         selectedItemColor: FlutterFlowTheme.of(context).primaryBackground,
         unselectedItemColor: Color(0xFF919191),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.house,
-              size: 25.0,
+        selectedBackgroundColor: Color(0x00000000),
+        borderRadius: 8.0,
+        itemBorderRadius: 8.0,
+        margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        width: double.infinity,
+        elevation: 0.0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.house,
+                  color: currentIndex == 0
+                      ? FlutterFlowTheme.of(context).primaryBackground
+                      : Color(0xFF919191),
+                  size: 25.0,
+                ),
+                Text(
+                  'HOME',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : Color(0xFF919191),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'WELCOME',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.calendar_month_sharp,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.calendar_month_sharp,
+                  color: currentIndex == 1
+                      ? FlutterFlowTheme.of(context).primaryBackground
+                      : Color(0xFF919191),
+                  size: 24.0,
+                ),
+                Text(
+                  'EVENTS',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : Color(0xFF919191),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'EVENTS',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.restaurant_sharp,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.restaurant_sharp,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).primaryBackground
+                      : Color(0xFF919191),
+                  size: 24.0,
+                ),
+                Text(
+                  'EAT',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : Color(0xFF919191),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'EAT',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.hotel_rounded,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.hotel_rounded,
+                  color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).primaryBackground
+                      : Color(0xFF919191),
+                  size: 24.0,
+                ),
+                Text(
+                  'SLEEP',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : Color(0xFF919191),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'SLEEP',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.keyboard_control,
-              size: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.keyboard_control,
+                  color: currentIndex == 4
+                      ? FlutterFlowTheme.of(context).primaryBackground
+                      : Color(0xFF919191),
+                  size: 24.0,
+                ),
+                Text(
+                  'MORE',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 4
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : Color(0xFF919191),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'MORE',
-            tooltip: '',
           )
         ],
       ),
