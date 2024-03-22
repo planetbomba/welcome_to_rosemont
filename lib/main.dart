@@ -144,10 +144,9 @@ class _NavBarPageState extends State<NavBarPage> {
                   'HOME',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 0
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : Color(0xFF919191),
-                    fontSize: 11.0,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
@@ -168,10 +167,9 @@ class _NavBarPageState extends State<NavBarPage> {
                   'EVENTS',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 1
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : Color(0xFF919191),
-                    fontSize: 11.0,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
@@ -192,10 +190,9 @@ class _NavBarPageState extends State<NavBarPage> {
                   'EAT',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 2
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : Color(0xFF919191),
-                    fontSize: 11.0,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
@@ -216,10 +213,9 @@ class _NavBarPageState extends State<NavBarPage> {
                   'SLEEP',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 3
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : Color(0xFF919191),
-                    fontSize: 11.0,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
@@ -240,10 +236,9 @@ class _NavBarPageState extends State<NavBarPage> {
                   'MORE',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 4
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : Color(0xFF919191),
-                    fontSize: 11.0,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
