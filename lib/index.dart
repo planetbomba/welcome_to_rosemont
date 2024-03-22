@@ -14,3 +14,4 @@ export '/pages/village/eat_details/eat_details_widget.dart'
     show EatDetailsWidget;
 export '/pages/village/sleep_details/sleep_details_widget.dart'
     show SleepDetailsWidget;
+export '/pages/descc/descc_home/descc_home_widget.dart' show DesccHomeWidget;

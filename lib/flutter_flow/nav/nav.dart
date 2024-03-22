@@ -128,6 +128,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SleepDetailsWidget(
                 id: params.getParam('id', ParamType.Document),
               ),
+            ),
+            FFRoute(
+              name: 'descc_home',
+              path: 'desccHome',
+              builder: (context, params) => DesccHomeWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

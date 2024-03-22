@@ -198,66 +198,76 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 16.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 200.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
-                            width: double.infinity,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.2, 1.0),
-                        child: Container(
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('descc_home');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 200.0,
+                    child: Stack(
+                      children: [
+                        Container(
                           width: double.infinity,
-                          height: 75.0,
+                          height: 200.0,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x00990000), Color(0xB11E2429)],
-                              stops: [0.0, 0.4],
-                              begin: AlignmentDirectional(0.0, -1.0),
-                              end: AlignmentDirectional(0, 1.0),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8.0),
-                              bottomRight: Radius.circular(8.0),
-                              topLeft: Radius.circular(0.0),
-                              topRight: Radius.circular(0.0),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
+                              width: double.infinity,
+                              height: 200.0,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.85),
-                        child: Text(
-                          'DES CONVENTION CENTER',
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Open Sans',
-                                    color: Colors.white,
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.w800,
-                                  ),
+                        Align(
+                          alignment: AlignmentDirectional(0.2, 1.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 75.0,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Color(0x00990000), Color(0xB11E2429)],
+                                stops: [0.0, 0.4],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                            ),
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                          ),
                         ),
-                      ),
-                    ],
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.85),
+                          child: Text(
+                            'DES CONVENTION CENTER',
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
