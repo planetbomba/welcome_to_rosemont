@@ -125,6 +125,7 @@ class _DesAboutWidgetState extends State<DesAboutWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).descc,
+                                  fontSize: 22.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),

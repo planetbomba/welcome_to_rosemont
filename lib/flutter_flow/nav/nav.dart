@@ -144,6 +144,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 initialPage: '',
                 page: DesAboutWidget(),
               ),
+            ),
+            FFRoute(
+              name: 'des_badge_about',
+              path: 'desBadgeAbout',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: DesBadgeAboutWidget(),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

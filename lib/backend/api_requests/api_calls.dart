@@ -14,6 +14,7 @@ class RosemontApiGroup {
   static String baseUrl = 'https://api.rosemont.com';
   static Map<String, String> headers = {};
   static GetPageCall getPageCall = GetPageCall();
+  static BadgeDealsCall badgeDealsCall = BadgeDealsCall();
 }
 
 class GetPageCall {
@@ -36,6 +37,29 @@ class GetPageCall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class BadgeDealsCall {
+  Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Badge Deals',
+      apiUrl: '${RosemontApiGroup.baseUrl}/items/rc_badge_deals',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? deal(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
 }
 
 /// End Rosemont Api Group Code

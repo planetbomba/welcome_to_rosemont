@@ -16,3 +16,5 @@ export '/pages/village/sleep_details/sleep_details_widget.dart'
     show SleepDetailsWidget;
 export '/pages/descc/descc_home/descc_home_widget.dart' show DesccHomeWidget;
 export '/pages/descc/des_about/des_about_widget.dart' show DesAboutWidget;
+export '/pages/descc/des_badge_about/des_badge_about_widget.dart'
+    show DesBadgeAboutWidget;
