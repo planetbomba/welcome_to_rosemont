@@ -152,6 +152,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 initialPage: '',
                 page: DesBadgeAboutWidget(),
               ),
+            ),
+            FFRoute(
+              name: 'des_contact',
+              path: 'desContact',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: DesContactWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'allstateHome',
+              path: 'allstateHome',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AllstateHomeWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'allstateAbout',
+              path: 'allstateAbout',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AllstateAboutWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'allstateContact',
+              path: 'allstateContact',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AllstateContactWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'allstateFaq',
+              path: 'allstateFaq',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AllstateFaqWidget(),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

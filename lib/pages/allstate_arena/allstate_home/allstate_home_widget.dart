@@ -1,28 +1,30 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'descc_home_model.dart';
-export 'descc_home_model.dart';
+import 'allstate_home_model.dart';
+export 'allstate_home_model.dart';
 
-class DesccHomeWidget extends StatefulWidget {
-  const DesccHomeWidget({super.key});
+class AllstateHomeWidget extends StatefulWidget {
+  const AllstateHomeWidget({super.key});
 
   @override
-  State<DesccHomeWidget> createState() => _DesccHomeWidgetState();
+  State<AllstateHomeWidget> createState() => _AllstateHomeWidgetState();
 }
 
-class _DesccHomeWidgetState extends State<DesccHomeWidget> {
-  late DesccHomeModel _model;
+class _AllstateHomeWidgetState extends State<AllstateHomeWidget> {
+  late AllstateHomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DesccHomeModel());
+    _model = createModel(context, () => AllstateHomeModel());
   }
 
   @override
@@ -42,7 +44,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).background,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).descc,
+          backgroundColor: FlutterFlowTheme.of(context).arena,
           iconTheme: IconThemeData(
               color: FlutterFlowTheme.of(context).primaryBackground),
           automaticallyImplyLeading: true,
@@ -51,7 +53,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(0.0),
               child: Image.asset(
-                'assets/images/dessLogo.png',
+                'assets/images/newArenaWhite.png',
                 height: 40.0,
                 fit: BoxFit.cover,
               ),
@@ -76,7 +78,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('des_about');
+                      context.pushNamed('allstateAbout');
                     },
                     child: Container(
                       width: double.infinity,
@@ -94,7 +96,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/dN1O44es_QMzhGQzjyqXN.jpg',
+                                'assets/images/ttIb80wjYq7KWn3j5li57.jpg',
                                 width: double.infinity,
                                 height: 200.0,
                                 fit: BoxFit.cover,
@@ -127,7 +129,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                               child: Align(
                                 alignment: AlignmentDirectional(0.0, 0.85),
                                 child: Text(
-                                  'ABOUT THE DES \nCONVENTION CENTER',
+                                  'ABOUT THE \nALLSTATE ARENA',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -156,7 +158,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('des_badge_about');
+                      context.pushNamed('allstateFaq');
                     },
                     child: Container(
                       width: double.infinity,
@@ -174,7 +176,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/UOTjj2GczfenkZPIpxwEA.jpg',
+                                'assets/images/aa-banner-00026.jpg',
                                 width: double.infinity,
                                 height: 200.0,
                                 fit: BoxFit.cover,
@@ -209,7 +211,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.85),
                             child: Text(
-                              'SHOW YOUR BADGE \nPROGRAM',
+                              'ALLSTATE ARENA\nKNOW BEFORE YOU GO',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -236,7 +238,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('des_contact');
+                      context.pushNamed('allstateContact');
                     },
                     child: Container(
                       width: double.infinity,
@@ -254,7 +256,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/PHyNkAUZZx57L3joLts6N.jpg',
+                                'assets/images/sliderA-3-1024x410-1.jpg',
                                 width: double.infinity,
                                 height: 200.0,
                                 fit: BoxFit.cover,
@@ -289,7 +291,7 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.85),
                             child: Text(
-                              'CONTACT THE \nCONVENTION CENTER',
+                              'CONTACT THE \nALLSTATE ARENA',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -307,29 +309,55 @@ class _DesccHomeWidgetState extends State<DesccHomeWidget> {
                     ),
                   ),
                 ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    await launchURL(
-                        'https://rosemont.com/desconvention/calendar/');
-                  },
-                  text: 'EVENT CALENDAR',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await launchURL(
+                              'https://rosemont.com/allstate/event-calendar/');
+                        },
+                        text: 'EVENT CALENDAR',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).arena,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                    elevation: 3.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      FlutterFlowIconButton(
+                        borderColor: FlutterFlowTheme.of(context).arena,
+                        borderRadius: 20.0,
+                        borderWidth: 1.0,
+                        buttonSize: 40.0,
+                        fillColor: FlutterFlowTheme.of(context).arena,
+                        icon: FaIcon(
+                          FontAwesomeIcons.mapMarkedAlt,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          size: 20.0,
+                        ),
+                        onPressed: () async {
+                          await launchURL(
+                              'https://maps.app.goo.gl/sRppofxZb83xY6tS6');
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ].addToEnd(SizedBox(height: 100.0)),

@@ -18,3 +18,12 @@ export '/pages/descc/descc_home/descc_home_widget.dart' show DesccHomeWidget;
 export '/pages/descc/des_about/des_about_widget.dart' show DesAboutWidget;
 export '/pages/descc/des_badge_about/des_badge_about_widget.dart'
     show DesBadgeAboutWidget;
+export '/pages/descc/des_contact/des_contact_widget.dart' show DesContactWidget;
+export '/pages/allstate_arena/allstate_home/allstate_home_widget.dart'
+    show AllstateHomeWidget;
+export '/pages/allstate_arena/allstate_about/allstate_about_widget.dart'
+    show AllstateAboutWidget;
+export '/pages/allstate_arena/allstate_contact/allstate_contact_widget.dart'
+    show AllstateContactWidget;
+export '/pages/allstate_arena/allstate_faq/allstate_faq_widget.dart'
+    show AllstateFaqWidget;
